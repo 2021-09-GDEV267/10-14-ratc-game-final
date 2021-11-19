@@ -6,35 +6,43 @@ public class AddLogTester : MonoBehaviour
 {
     public void Start()
     {
-        Log firstLog = new Log(1);
-        firstLog.Picked = Log.PickEvent.draw;
-        firstLog.Played = Log.PlayEvent.peek;
-        Logger.S.AddLog(firstLog);
+        Log log0 = new Log(1);
+        log0.Picked = Log.PickEvent.draw;
+        log0.Played = Log.PlayEvent.peek;
+        Logger.S.AddLog(log0);
 
-        Log secondLog = new Log(2);
-        secondLog.Picked = Log.PickEvent.discard;
-        secondLog.Played = Log.PlayEvent.drawTwo;
-        Logger.S.AddLog(secondLog);
+        Log log1 = new Log(2);
+        log1.Picked = Log.PickEvent.discard;
+        log1.Played = Log.PlayEvent.drawTwo;
+        Logger.S.AddLog(log1);
 
-        Log thirdLog = new Log(3);
-        thirdLog.Picked = Log.PickEvent.draw;
-        thirdLog.Played = Log.PlayEvent.swap;
-        Logger.S.AddLog(thirdLog);
+        Log log2 = new Log(3);
+        log2.Picked = Log.PickEvent.draw;
+        log2.Played = Log.PlayEvent.swap;
+        log2.SetCardsSwapped(new GameObject("Crazy Cat"), new GameObject("Lazy Cat"));
+        Logger.S.AddLog(log2);
 
-        Log fourthLog = new Log(4);
-        fourthLog.Picked = Log.PickEvent.draw;
-        fourthLog.Played = Log.PlayEvent.peek;
-        Logger.S.AddLog(fourthLog);
+        Log log3 = new Log(4);
+        log3.Picked = Log.PickEvent.draw;
+        log3.Played = Log.PlayEvent.peek;
+        Logger.S.AddLog(log3);
 
-        Log fifthLog = new Log(1);
-        fifthLog.Picked = Log.PickEvent.discard;
-        fifthLog.Played = Log.PlayEvent.swap;
-        Logger.S.AddLog(fifthLog);
+        Log log4 = new Log(1);
+        log4.Picked = Log.PickEvent.discard;
+        log4.Played = Log.PlayEvent.swap;
+        Logger.S.AddLog(log4);
 
-        Log sixthLog = new Log(2);
-        sixthLog.Picked = Log.PickEvent.discard;
-        sixthLog.Played = Log.PlayEvent.drawTwo;
-        Logger.S.AddLog(sixthLog);
+        Log log5 = new Log(2);
+        log5.Picked = Log.PickEvent.discard;
+        log5.Played = Log.PlayEvent.drawTwo;
+        Logger.S.AddLog(log5);
+
+        PrintLogs();
+
+        GameObject[] cardsSwapped = log2.GetCardsSwapped();
+
+        if (cardsSwapped != null)
+            print($"Log: {log2.LogNumber} || Swapped; player card: {cardsSwapped[0].name} || Swapped; opponents card: {cardsSwapped[1].name}");
     }
 
 
