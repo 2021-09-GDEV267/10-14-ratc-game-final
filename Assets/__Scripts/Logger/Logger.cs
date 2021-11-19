@@ -20,23 +20,23 @@ public class Log
 
     public Log(int playerNumber, PickEvent pickEvent, PlayEvent playEvent)
     {
-        this.pickEvent = pickEvent;
-        this.playEvent = playEvent;
-        this.playerNumber = playerNumber;
-        logNumber = NumberInLog;
+        _pickEvent = pickEvent;
+        _playEvent = playEvent;
+        _playerNumber = playerNumber;
+        _logNumber = NumberInLog;
         NumberInLog++;
     }
-    
-    [SerializeField] PickEvent pickEvent;
-    [SerializeField] PlayEvent playEvent;
-    [SerializeField] int playerNumber;
+
     static int NumberInLog;
-    [SerializeField] int logNumber;
-    [SerializeField] string logDescription;
 
-    public string Description => $"Log Number: {logNumber} || Player {playerNumber} picked from the {pickEvent} and played {playEvent}";
+    PickEvent _pickEvent;
+    PlayEvent _playEvent;
+    int _playerNumber;
+    int _logNumber;
 
-    public int LogNumber => logNumber;
+    public string Description => $"Log Number: {_logNumber} || Player {_playerNumber} picked from the {_pickEvent} pile and played {_playEvent}";
+
+    public int LogNumber => _logNumber;
 }
 
 public class Logger : MonoBehaviour
