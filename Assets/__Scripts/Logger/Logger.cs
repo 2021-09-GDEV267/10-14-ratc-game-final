@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class Log
-{ 
+{
     public enum PickEvent
     {
         draw,
@@ -18,10 +17,8 @@ public class Log
         drawTwo
     }
 
-    public Log(int playerNumber, PickEvent pickEvent, PlayEvent playEvent)
+    public Log(int playerNumber)
     {
-        _pickEvent = pickEvent;
-        _playEvent = playEvent;
         _playerNumber = playerNumber;
         _logNumber = NumberInLog;
         NumberInLog++;
@@ -31,8 +28,32 @@ public class Log
 
     PickEvent _pickEvent;
     PlayEvent _playEvent;
+
+    GameObject[] _cardsPeeked;
+    GameObject[] _cardsSwapped;
+
     int _playerNumber;
     int _logNumber;
+
+    public PickEvent Picked
+    {
+        get => _pickEvent;
+        set => _pickEvent = value;
+    }
+
+    public PlayEvent Played
+    {
+        get => _playEvent;
+        set => _playEvent = value;
+    }
+
+    public void SetCardsPeeked(GameObject playerCard, GameObject opponentsCard) => _cardsPeeked = new GameObject[] { playerCard, opponentsCard };
+
+    public void SetCardsSwapped(GameObject playerCard, GameObject opponentsCard) => _cardsSwapped = new GameObject[] { playerCard, opponentsCard };
+
+    public GameObject[] GetCardsPeeked() => _cardsPeeked;
+
+    public GameObject[] GetCardsSwapped() => _cardsSwapped;
 
     public string Description => $"Log Number: {_logNumber} || Player {_playerNumber} picked from the {_pickEvent} pile and played {_playEvent}";
 
@@ -48,7 +69,7 @@ public class Logger : MonoBehaviour
 
     void Awake() => S = this;
 
-    public void AddLog(int playerNumber, Log.PickEvent pickEvent, Log.PlayEvent playEvent) => gameLog.Add(new Log(playerNumber, pickEvent, playEvent));
+    public void AddLog(Log log) => gameLog.Add(log);
 
     public void DisplayLog()
     {
@@ -65,8 +86,6 @@ public class Logger : MonoBehaviour
     public void WriteLogs()
     {
         foreach (var l in gameLog)
-        {
             print($"{l.Description}");
-        }
     }
 }
