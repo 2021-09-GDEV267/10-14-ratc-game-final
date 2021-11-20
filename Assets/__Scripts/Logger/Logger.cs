@@ -17,14 +17,7 @@ public class Log
         drawTwo
     }
 
-    public Log(int playerNumber)
-    {
-        _playerNumber = playerNumber;
-        _logNumber = NumberInLog;
-        NumberInLog++;
-    }
-
-    static int NumberInLog;
+    public Log(int playerNumber) => _playerNumber = playerNumber;
 
     PickEvent _pickEvent;
     PlayEvent _playEvent;
@@ -47,6 +40,12 @@ public class Log
         set => _playEvent = value;
     }
 
+    public int LogNumber
+    {
+        get => _logNumber;
+        set => _logNumber = value;
+    }
+
     public void SetCardsPeeked(GameObject playerCard, GameObject opponentsCard) => _cardsPeeked = new GameObject[] { playerCard, opponentsCard };
 
     public void SetCardsSwapped(GameObject playerCard, GameObject opponentsCard) => _cardsSwapped = new GameObject[] { playerCard, opponentsCard };
@@ -57,7 +56,7 @@ public class Log
 
     public string Description => $"Log Number: {_logNumber} || Player {_playerNumber} picked from the {_pickEvent} pile and played {_playEvent}";
 
-    public int LogNumber => _logNumber;
+    public int PlayerNumber => _playerNumber;
 }
 
 public class Logger : MonoBehaviour
@@ -69,7 +68,11 @@ public class Logger : MonoBehaviour
 
     void Awake() => S = this;
 
-    public void AddLog(Log log) => gameLog.Add(log);
+    public void AddLog(Log log)
+    {
+        gameLog.Add(log);
+        log.LogNumber = gameLog.Count - 1;
+    }
 
     public void DisplayLog()
     {

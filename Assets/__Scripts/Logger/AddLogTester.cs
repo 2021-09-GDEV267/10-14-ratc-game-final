@@ -42,7 +42,7 @@ public class AddLogTester : MonoBehaviour
         GameObject[] cardsSwapped = log2.GetCardsSwapped();
 
         if (cardsSwapped != null)
-            print($"Log: {log2.LogNumber} || Swapped; player card: {cardsSwapped[0].name} || Swapped; opponents card: {cardsSwapped[1].name}");
+            print($"Log: {log2.LogNumber} || Swapped; player {log2.PlayerNumber}: {cardsSwapped[0].name} || Swapped; opponents card: {cardsSwapped[1].name}");
     }
 
 
