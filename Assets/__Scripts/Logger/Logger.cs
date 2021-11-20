@@ -2,43 +2,75 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//event to set which pile player picked from
+public enum PickEvent
+{
+    draw,
+    discard
+}
+
+//event to set which action the player does
+public enum PlayEvent
+{
+    drawTwo,
+    peek,
+    swap,
+    replace,
+    discard
+}
+
 public class Log
 {
-    public enum PickEvent
+    //log constructor used for drawTwo and discard 
+    public Log(int playerNumber, PickEvent pickEvent, PlayEvent playEvent)
     {
-        draw,
-        discard
+        _pickEvent = pickEvent;
+        _playEvent = playEvent;
+        _playerNumber = playerNumber;
     }
 
-    public enum PlayEvent
+    //log constructor for replace and peek
+    public Log(int playerNumber, PickEvent pickEvent, PlayEvent playEvent, GameObject card)
     {
-        peek,
-        swap,
-        drawTwo
+        _pickEvent = pickEvent;
+        _playerNumber = playerNumber;
+        _playEvent = playEvent;
+       
+        switch (playEvent)
+        {
+            case PlayEvent.peek:
+                _cardPeeked = card;
+                break;
+            case PlayEvent.replace:
+                _cardReplaced = card;
+                break;
+        }
     }
 
-    public Log(int playerNumber) => _playerNumber = playerNumber;
-
+    //log constuctor used for swap
+    public Log(int playerNumber, PickEvent pickEvent, GameObject playerCard, GameObject opponentCard)
+    {
+        _pickEvent = pickEvent;
+        _playerNumber = playerNumber;
+        _playEvent = PlayEvent.swap;
+        _cardsSwapped = new GameObject[2];
+        _cardsSwapped[0] = playerCard;
+        _cardsSwapped[1] = opponentCard;
+    }
+   
     PickEvent _pickEvent;
     PlayEvent _playEvent;
 
-    GameObject[] _cardsPeeked;
+    GameObject _cardPeeked;
+    GameObject _cardReplaced;
     GameObject[] _cardsSwapped;
 
     int _playerNumber;
     int _logNumber;
 
-    public PickEvent Picked
-    {
-        get => _pickEvent;
-        set => _pickEvent = value;
-    }
+    public PickEvent Picked => _pickEvent;
 
-    public PlayEvent Played
-    {
-        get => _playEvent;
-        set => _playEvent = value;
-    }
+    public PlayEvent Played => _playEvent;
 
     public int LogNumber
     {
@@ -46,13 +78,22 @@ public class Log
         set => _logNumber = value;
     }
 
-    public void SetCardsPeeked(GameObject playerCard, GameObject opponentsCard) => _cardsPeeked = new GameObject[] { playerCard, opponentsCard };
+    public GameObject GetCardPeeked() => _cardPeeked;
 
-    public void SetCardsSwapped(GameObject playerCard, GameObject opponentsCard) => _cardsSwapped = new GameObject[] { playerCard, opponentsCard };
+    public GameObject GetCardSwapped(int indx)
+    {
+        if (indx >= 0 && indx < _cardsSwapped.Length)
+            return _cardsSwapped[indx];
+        return null;
+    }
 
-    public GameObject[] GetCardsPeeked() => _cardsPeeked;
+    public GameObject GetReplaced() => _cardReplaced;
 
-    public GameObject[] GetCardsSwapped() => _cardsSwapped;
+    public bool HasReplaced() => _cardReplaced != null;
+
+    public bool HasPeeked() => _cardPeeked != null;
+
+    public bool HasSwapped() => _cardsSwapped != null;
 
     public string Description => $"Log Number: {_logNumber} || Player {_playerNumber} picked from the {_pickEvent} pile and played {_playEvent}";
 
@@ -64,7 +105,7 @@ public class Logger : MonoBehaviour
     public static Logger S;
     [SerializeField] GameObject logCanvas;
     [SerializeField] GameObject logButton;
-    [SerializeField] List<Log> gameLog = new List<Log>();
+    List<Log> gameLog = new List<Log>();
 
     void Awake() => S = this;
 
@@ -86,9 +127,18 @@ public class Logger : MonoBehaviour
         logButton.SetActive(true);
     }
 
-    public void WriteLogs()
+    public void PrintLogs()
     {
         foreach (var l in gameLog)
-            print($"{l.Description}");
+        {
+            if (l.HasSwapped())
+                print($"Log Number: {l.LogNumber} || player {l.PlayerNumber} picked from the {l.Picked} pile and swapped: {l.GetCardSwapped(0).name} with opponents card: {l.GetCardSwapped(1).name}");
+            else if (l.HasPeeked())
+                print($"Log Number: {l.LogNumber} || player {l.PlayerNumber} picked from the {l.Picked} pile and peeked at: {l.GetCardPeeked().name}");
+            else if (l.HasReplaced())
+                print($"Log Number: {l.LogNumber} || player {l.PlayerNumber} picked from the {l.Picked} pile and replaced card: {l.GetReplaced().name}");
+            else
+                print(l.Description);
+        }
     }
 }
