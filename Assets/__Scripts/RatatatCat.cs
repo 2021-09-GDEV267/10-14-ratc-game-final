@@ -21,8 +21,10 @@ public class RatatatCat : MonoBehaviour
     public TextAsset deckXML;
     public TextAsset layoutXML;
     public Vector3 layoutCenter = Vector3.zero;
-    public int numStartingCards = 7;
+    public int numStartingCards = 4;
     public float drawTimeStagger = 0.1f;
+    public GameObject viewHand;
+    public GameObject hand;
 
     [Header("Set Dynamically")]
     public Deck deck;
@@ -31,6 +33,7 @@ public class RatatatCat : MonoBehaviour
     public List<CatPlayer> players;
     public CardCat targetCard;
     public TurnPhaseCat phase = TurnPhaseCat.idle;
+    public int index = 0;
 
     private CatLayout layout;
     private Transform layoutAnchor;
@@ -118,75 +121,28 @@ public class RatatatCat : MonoBehaviour
     public void CCCallback(CardCat cc)
     {
         Utils.tr("Rat-a-tat-cat:CCCallback", cc.name);
-        StartGame();
+        StartCoroutine(CanvasSet(viewHand, hand));
+        CURRENT_PLAYER = players[index];
     }
 
-    public void StartGame()
+    private IEnumerator CanvasSet(GameObject obj, GameObject deactivate)
     {
-        PassTurn(1);
+        deactivate.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        obj.SetActive(true);
+        yield return null;
     }
 
-    public void PassTurn(int num = 1)
+    public void ViewStart()
     {
-        if (num == 1)
-        {
-            int ndx = players.IndexOf(CURRENT_PLAYER);
-            num = (ndx + 1) % 4;
-        }
-        int lastPlayerNum = -1;
-        if (CURRENT_PLAYER != null)
-        {
-            lastPlayerNum = CURRENT_PLAYER.playerNum;
-            if (CheckGameOver())
-            {
-                return;
-            }
-        }
-        CURRENT_PLAYER = players[num];
-        phase = TurnPhaseCat.pre;
-        CURRENT_PLAYER.TakeTurn();
-        Utils.tr("Rat-a-tat-cat:PassTurn()", "Old: " + lastPlayerNum, "New: " + CURRENT_PLAYER.playerNum);
+        index++;
+        CURRENT_PLAYER = players[index];
+        StartCoroutine(CanvasSet(viewHand, hand));
     }
 
-    public bool CheckGameOver()
+    public void View()
     {
-        if (drawpile.Count == 0)
-        {
-            List<Card> cards = new List<Card>();
-            foreach (CardCat cc in discardpile)
-            {
-                cards.Add(cc);
-            }
-            discardpile.Clear();
-            Deck.Shuffle(ref cards);
-            drawpile = UpgradeCardsList(cards);
-            ArrangeDrawPile();
-        }
-
-        if (CURRENT_PLAYER.hand.Count == 0)
-        {
-            phase = TurnPhaseCat.gameOver;
-            Invoke("RestartGame", 1);
-            return (true);
-        }
-        return (false);
-    }
-
-    public void RestartGame()
-    {
-        CURRENT_PLAYER = null;
-        SceneManager.LoadScene("Rat-a-tat-cat");
-    }
-
-    public bool ValidPlay(CardCat cc)
-    {
-        if (cc.rank == targetCard.rank) return (true);
-
-        if (cc.suit == targetCard.suit)
-        {
-            return (true);
-        }
-        return (false);
+        StartCoroutine(CanvasSet(hand, viewHand));
     }
 
     public CardCat MoveToTarget(CardCat tCC)
@@ -248,46 +204,6 @@ public class RatatatCat : MonoBehaviour
         }
         drawpile.RemoveAt(0);
         return (cc);
-    }
-
-    public void CardClicked(CardCat tCC)
-    {
-        if (CURRENT_PLAYER.type != PlayerTypeCat.human) return;
-        if (phase == TurnPhaseCat.waiting) return;
-
-        switch (tCC.state)
-        {
-            case CCState.drawpile:
-                CardCat cc = CURRENT_PLAYER.AddCard(Draw());
-                cc.callbackPlayer = CURRENT_PLAYER;
-                Utils.tr("Rat-a-tat-cat:CardClicked()", "Draw", cc.name);
-                phase = TurnPhaseCat.waiting;
-                break;
-            case CCState.hand:
-                if (ValidPlay(tCC))
-                {
-                    CURRENT_PLAYER.RemoveCard(tCC);
-                    MoveToTarget(tCC);
-                    tCC.callbackPlayer = CURRENT_PLAYER;
-                    Utils.tr("Rat-a-tat-cat:CardClicked()", "Play", tCC.name, targetCard.name + " is target");
-                    phase = TurnPhaseCat.waiting;
-                }
-                else
-                {
-                    Utils.tr("Rat-a-tat-cat:CardClicked()", "Attempted to Play", tCC.name, targetCard.name + " is target");
-                }
-                break;
-            case CCState.target:
-                CardCat cC = CURRENT_PLAYER.AddCard(tCC);
-                cC.timeStart = 0;
-                cC.callbackPlayer = CURRENT_PLAYER;
-                Utils.tr("Rat-a-tat-cat:CardClicked()", "Take", cC.name);
-                MoveToTarget(discardpile[discardpile.Count - 1]);
-                cC.state = CCState.toHand;
-                cC.faceUp = false;
-                phase = TurnPhaseCat.waiting;
-                break;
-        }
     }
 
     List<CardCat> UpgradeCardsList(List<Card> lCD)

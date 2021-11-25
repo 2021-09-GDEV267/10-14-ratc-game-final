@@ -100,37 +100,37 @@ public class CatPlayer
     {
         Utils.tr("Player.TakeTurn");
 
-        if (type == PlayerTypeCat.human) return;
+        //if (type == PlayerTypeCat.human) return;
 
-        RatatatCat.S.phase = TurnPhaseCat.waiting;
+        //RatatatCat.S.phase = TurnPhaseCat.waiting;
 
-        CardCat cc;
+        //CardCat cc;
 
-        List<CardCat> validCards = new List<CardCat>();
-        foreach (CardCat tCC in hand)
-        {
-            if (RatatatCat.S.ValidPlay(tCC))
-            {
-                validCards.Add(tCC);
-            }
-        }
+        //List<CardCat> validCards = new List<CardCat>();
+        //foreach (CardCat tCC in hand)
+        //{
+        //    if (RatatatCat.S.ValidPlay(tCC))
+        //    {
+        //        validCards.Add(tCC);
+        //    }
+        //}
 
-        if (validCards.Count == 0)
-        {
-            cc = AddCard(RatatatCat.S.Draw());
-            cc.callbackPlayer = this;
-            return;
-        }
+        //if (validCards.Count == 0)
+        //{
+        //    cc = AddCard(RatatatCat.S.Draw());
+        //    cc.callbackPlayer = this;
+        //    return;
+        //}
 
-        cc = validCards[Random.Range(0, validCards.Count)];
-        RemoveCard(cc);
-        RatatatCat.S.MoveToTarget(cc);
-        cc.callbackPlayer = this;
+        //cc = validCards[Random.Range(0, validCards.Count)];
+        //RemoveCard(cc);
+        //RatatatCat.S.MoveToTarget(cc);
+        //cc.callbackPlayer = this;
     }
 
     public void CCCallback(CardCat tCC)
     {
         Utils.tr("Player.CBCallback()", tCC.name, "Player " + playerNum);
-        RatatatCat.S.PassTurn();
+        //RatatatCat.S.PassTurn();
     }
 }

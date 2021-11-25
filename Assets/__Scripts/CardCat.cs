@@ -34,6 +34,7 @@ public class CardCat : Card
 
     [System.NonSerialized]
     public CatPlayer callbackPlayer = null;
+    //public SlotDef slotDef;
 
     public void MoveTo(Vector3 ePos, Quaternion eRot)
     {
@@ -131,9 +132,9 @@ public class CardCat : Card
         }
     }
 
-    override public void OnMouseUpAsButton()
-    {
-        RatatatCat.S.CardClicked(this);
-        base.OnMouseUpAsButton();
-    }
+    //override public void OnMouseUpAsButton()
+    //{
+    //    RatatatCat.S.CardClicked(this);
+    //    base.OnMouseUpAsButton();
+    //}
 }

@@ -4,63 +4,88 @@ using UnityEngine;
 
 public class CardClick : MonoBehaviour
 {
-    public string designator;
     public GameObject otherButton;
-    public GameObject confirm;
+    public GameObject newPanel;
+    public List<CardCat> playerHand;
+    public List<Vector3> listOfPos;
+    public GameObject CatCardPrefab;
+    public GameObject camera;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (designator == "show")
+
+    }
+
+    public void FillHand()
+    {
+        for(int i = 0; i < RatatatCat.CURRENT_PLAYER.hand.Count; i++)
         {
-            this.gameObject.SetActive(true);
-        }
-        else if (designator == "back")
-        {
-            this.gameObject.SetActive(false);
-        }
-        else if (designator == "confirm")
-        {
-            this.gameObject.SetActive(false);
+            playerHand.Add(RatatatCat.CURRENT_PLAYER.hand[i]);
         }
     }
 
     public void Hide()
     {
-        this.gameObject.SetActive(false);
+        RatatatCat.S.View();
     }
 
     public void ShowCards()
     {
-        RatatatCat.CURRENT_PLAYER.hand[0].faceUp = true;
-        RatatatCat.CURRENT_PLAYER.hand[3].faceUp = true;
-        if (otherButton.GetComponent<CardClick>().designator == "back")
-        {
-            otherButton.SetActive(true);
+        otherButton.GetComponent<CardClick>().FillHand();
+        camera.transform.position = new Vector3(camera.transform.position.x, -100, camera.transform.position.z);
+        otherButton.GetComponent<CardClick>().PopHand();
+    }
+
+    private void PopHand()
+    {
+        CardCat Pcard;
+        listOfPos = new List<Vector3>();
+
+        for (int i = 0; i<playerHand.Count; i++) {
+            //GameObject obj = Instantiate(CatCardPrefab) as GameObject;
+            //Pcard = obj.GetComponent<CardCat>();
+            //Pcard = playerHand[i];
+            //obj.transform.localScale *= 3;
+            Pcard = playerHand[i];
+            listOfPos.Add(Pcard.transform.position);
+            Pcard.transform.position = new Vector3(-12 + (i * 8), -104, 0);
+            if(Pcard == playerHand[0] || Pcard == playerHand[3])
+            {
+                Pcard.faceUp = true;
+            }
         }
+    }
+
+    public void SendBack()
+    {
+        CardCat Pcard;
+        Debug.Log(playerHand.Count);
+        for (int i = 0; i < playerHand.Count; i++)
+        {
+            Pcard = playerHand[i];
+            Pcard.transform.position = listOfPos[i];
+            playerHand[i].transform.position = Pcard.transform.position;
+            if (Pcard == playerHand[0] || Pcard == playerHand[3])
+            {
+                Pcard.faceUp = false;
+            }
+            Debug.Log("I'm alive");
+        }
+        listOfPos.Clear();
+        camera.transform.position = new Vector3(camera.transform.position.x, 0, camera.transform.position.z);
+        RatatatCat.S.ViewStart();
     }
 
     public void ShowConfirm()
     {
-        confirm.SetActive(true);
+        newPanel.SetActive(true);
     }
 
-    public void HideCards()
-    {
-        RatatatCat.CURRENT_PLAYER.hand[0].faceUp = false;
-        RatatatCat.CURRENT_PLAYER.hand[3].faceUp = false;
-        if (otherButton.GetComponent<CardClick>().designator == "show")
-        {
-            otherButton.SetActive(true);
-        }
-    }
 
     public void HideAll()
     {
-        GameObject obj = otherButton.GetComponent<CardClick>().otherButton;
-        otherButton.SetActive(false);
-        obj.SetActive(false);
-        RatatatCat.CURRENT_PLAYER.hand[0].faceUp = false;
-        RatatatCat.CURRENT_PLAYER.hand[3].faceUp = false;
+        otherButton.GetComponent<CardClick>().Hide();
+        Hide();
     }
 }
