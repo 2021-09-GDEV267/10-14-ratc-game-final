@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public enum TurnPhaseCat
 {
@@ -25,6 +26,10 @@ public class RatatatCat : MonoBehaviour
     public float drawTimeStagger = 0.1f;
     public GameObject viewHand;
     public GameObject hand;
+    public Text playerNum;
+    public GameObject transition;
+    public GameObject startGame;
+    public GameObject cardShow;
 
     [Header("Set Dynamically")]
     public Deck deck;
@@ -125,21 +130,42 @@ public class RatatatCat : MonoBehaviour
         CURRENT_PLAYER = players[index];
     }
 
+    //switch canvas screens from one to another
     private IEnumerator CanvasSet(GameObject obj, GameObject deactivate)
     {
+        
         deactivate.SetActive(false);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.3f);
         obj.SetActive(true);
         yield return null;
     }
 
+    //switch canvas to the canvas screen that is for passing to the next player
     public void ViewStart()
     {
-        index++;
-        CURRENT_PLAYER = players[index];
-        StartCoroutine(CanvasSet(viewHand, hand));
+        if (CURRENT_PLAYER.playerNum < 4)
+        {
+            index++;
+            CURRENT_PLAYER = players[index];
+            StartCoroutine(CanvasSet(viewHand, hand));
+            playerNum.text = "Player " + CURRENT_PLAYER.playerNum;
+        }
+        else if(CURRENT_PLAYER.playerNum == 4)
+        {
+            StartCoroutine(CanvasSet(viewHand, hand));
+            playerNum.text = "Player 1";
+            cardShow.SetActive(false);
+            startGame.SetActive(true);
+        }
     }
 
+    public void StartGame()
+    {
+        //This is assuming that the pre-game loop will transition to the game loop via scene transition
+        SceneManager.LoadScene("Begin_Game");
+    }
+
+    //switch canvas to the canvas screen that is for viewing your hand
     public void View()
     {
         StartCoroutine(CanvasSet(hand, viewHand));
@@ -154,7 +180,6 @@ public class RatatatCat : MonoBehaviour
 
         tCC.SetSortingLayerName("10");
         tCC.eventualSortLayer = layout.target.layerName;
-        Debug.Log(targetCard);
         if (targetCard != null)
         {
             MoveToDiscard(targetCard);
