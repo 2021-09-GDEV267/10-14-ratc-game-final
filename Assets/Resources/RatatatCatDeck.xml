@@ -1,0 +1,75 @@
+<xml>
+	<!-- This file relies heavily on the art of the cards and will need to be modified when the cards are made. -->
+	<!-- cardType stands for the card info displayed in corner of cards  -->
+	<decorator type="cardType" x="-1.05" y="1.42" z="0" flip="0" scale="1.25"/>
+	<decorator type="cardType" x="1.05" y="-1.42" z="0" flip="1" scale="1.25"/>
+
+
+	<!-- A list of all cards that defines where the cat images are placed. -->
+
+	<!-- Wasnt sure whether to use pip info or just images for cat cards. I left both-->
+	<!-- The pip info gives a point center card and alters image using scale of prospector card pips. -->
+	<!--Probably need to be updated when ratatatcat sprites used -->
+
+	<!-- Number Cards: -->
+	<card rank="0" face="CatCard_0">
+		<pip x="0" y="0" z="0" flip="0" scale="2.5" />
+	</card>
+
+	<card rank="1" face="CatCard_1">
+		<pip x="0" y="0" z="0" flip="0" scale="2.5"/>
+	</card>
+
+	<card rank="2" face="CatCard_2">
+		<pip x="0" y="0" z="0" flip="0" scale="2.5"/>
+	</card>
+
+	<card rank="3" face="CatCard_3">
+		<pip x="0" y="0" z="0" flip="0" scale="2.5"/>
+	</card>
+
+	<card rank="4" face="CatCard_4">
+		<pip x="0" y="0" z="0" flip="0" scale="2.5"/>
+	</card>
+
+	<card rank="5" face="CatCard_5">
+		<pip x="0" y="0" z="0" flip="0" scale="2.5"/>
+	</card>
+
+	<card rank="6" face="CatCard_6">
+		<pip x="0" y="0" z="0" flip="0" scale="2.5"/>
+	</card>
+
+	<card rank="7" face="CatCard_7">
+		<pip x="0" y="0" z="0" flip="0" scale="2.5"/>
+	</card>
+
+	<card rank="8" face="CatCard_8">
+		<pip x="0" y="0" z="0" flip="0" scale="2.5"/>
+	</card>
+
+	<card rank="9" face="CatCard_9">
+		<pip x="0" y="0" z="0" flip="0" scale="2.5"/>
+	</card>
+
+	<!-- Specialty Cards: -->
+	<!-- these also with pip and the name of the Sprite to be shown. -->
+	<!-- D : draw2, P: peek, S: Switch, -->
+	<!-- Not sure which graphics will be used yet -->
+
+	<!--Draw 2-->
+	<card rank="10" face="CatCard_D" special="d">
+	<pip x="0" y="0" z="0" flip="0" scale="2.5"/>
+	</card>
+
+	<!--Peek-->
+	<card rank="11" face="CatCard_P" special="p">
+	<pip x="0" y="0" z="0" flip="0" scale="2.5"/>
+	</card>
+
+	<!--Switch-->
+	<card rank="12" face="CatCard_S" special="s">
+	<pip x="0" y="0" z="0" flip="0" scale="2.5"/>
+	</card>
+
+</xml>

@@ -112,6 +112,7 @@ public class Decorator
 [System.Serializable]
 public class CardDefinition
 {
+    public string special;
     public string face; // Sprite to use for each face card
     public int rank; // The rank (1-13) of this card
     public List<Decorator> pips = new List<Decorator>(); // Pips used
