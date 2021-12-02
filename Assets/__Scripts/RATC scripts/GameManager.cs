@@ -16,7 +16,12 @@ public struct CardData
 }
 
 
-	public struct PlayerNames { public string Player1, Player2, Player3, Player4; }
+	public struct PlayerNames
+{
+	public string Player1, Player2, Player3, Player4;
+  public string Color1, Color2, Color3, Color4;
+}
+
 public struct PlayersCurrentHand { public CardData Card1, Card2, Card3, Card4; }
 	/// <summary>
 	/// Singleton which manages game states for the overall game.
