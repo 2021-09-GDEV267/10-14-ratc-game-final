@@ -202,6 +202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 385747213}
   - component: {fileID: 385747214}
+  - component: {fileID: 385747215}
   m_Layer: 0
   m_Name: InputManager
   m_TagString: Untagged
@@ -235,6 +236,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f803809edd32544c3b85e57a8289643a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &385747215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385747212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a054d2564c97d40cba75982856c873a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &439841644
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,6 +277,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1b7df28d269f41128c24a1db6cb347b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AllTheCards: []
+  CardsNotInHand: []
   state: 0
   Scene: 0
 --- !u!4 &439841646

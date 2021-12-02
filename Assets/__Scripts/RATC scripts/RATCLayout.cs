@@ -28,6 +28,32 @@ public class RATCLayout : MonoBehaviour
     public List<RATCSlotDef> slotDefs; // The SlotDefs hands
     public RATCSlotDef drawPile;
     public RATCSlotDef discardPile;
+
+    public RATCSlotDef Player_Card1;
+    public RATCSlotDef Player_Card2;
+    public RATCSlotDef Player_Card3;
+    public RATCSlotDef Player_Card4;
+
+    public RATCSlotDef P1_Card1;
+    public RATCSlotDef P1_Card2;
+    public RATCSlotDef P1_Card3;
+    public RATCSlotDef P1_Card4;
+
+    public RATCSlotDef P2_Card1;
+    public RATCSlotDef P2_Card2;
+    public RATCSlotDef P2_Card3;
+    public RATCSlotDef P2_Card4;
+
+    public RATCSlotDef P3_Card1;
+    public RATCSlotDef P3_Card2;
+    public RATCSlotDef P3_Card3;
+    public RATCSlotDef P3_Card4;
+
+    public RATCSlotDef P4_Card1;
+    public RATCSlotDef P4_Card2;
+    public RATCSlotDef P4_Card3;
+    public RATCSlotDef P4_Card4;
+
     public RATCSlotDef target;
 
     // Bartok calls this method to read in the BartokLayoutXML.xml file
