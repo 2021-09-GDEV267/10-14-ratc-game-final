@@ -1,0 +1,17 @@
+Using pre-set license
+Pro License: NO
+
+ COMMAND LINE ARGUMENTS:
+/Applications/Unity/EditorsFolder/2021.1.12f1/Unity.app/Contents/MacOS/Unity
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker44
+-projectPath
+/Users/admin/Documents/Unity/Learn/10-14-ratc-game-final
+-logFile
+Logs/AssetImportWorker44.log
+-srvPort
+63389
+Successfully changed project path to: /Users/admin/Documents/Unity/Learn/10-14-ratc-game-final

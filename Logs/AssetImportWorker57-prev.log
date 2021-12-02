@@ -13,62 +13,62 @@ AssetImportWorker57
 -logFile
 Logs/AssetImportWorker57.log
 -srvPort
-57811
+61866
 Successfully changed project path to: /Users/admin/Documents/Unity/Learn/10-14-ratc-game-final
 /Users/admin/Documents/Unity/Learn/10-14-ratc-game-final
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 67.60 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 473.97 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.1.12f1 (afcadd793de6)
 [Subsystems] Discovering subsystems at path /Applications/Unity/EditorsFolder/2021.1.12f1/Unity.app/Contents/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path /Users/admin/Documents/Unity/Learn/10-14-ratc-game-final/Assets
 GfxDevice: creating device client; threaded=0; jobified=0
-2021-11-30 17:34:57.747 Unity[36612:696093] Color LCD preferred device: NVIDIA GeForce GT 650M (high power)
-2021-11-30 17:34:57.747 Unity[36612:696093] Metal devices available: 2
-2021-11-30 17:34:57.747 Unity[36612:696093] 0: NVIDIA GeForce GT 650M (high power)
-2021-11-30 17:34:57.747 Unity[36612:696093] 1: Intel HD Graphics 4000 (low power)
-2021-11-30 17:34:57.748 Unity[36612:696093] Using device NVIDIA GeForce GT 650M (high power)
+2021-12-01 19:38:58.018 Unity[47934:894156] Color LCD preferred device: NVIDIA GeForce GT 650M (high power)
+2021-12-01 19:38:58.018 Unity[47934:894156] Metal devices available: 2
+2021-12-01 19:38:58.018 Unity[47934:894156] 0: NVIDIA GeForce GT 650M (high power)
+2021-12-01 19:38:58.018 Unity[47934:894156] 1: Intel HD Graphics 4000 (low power)
+2021-12-01 19:38:58.019 Unity[47934:894156] Using device NVIDIA GeForce GT 650M (high power)
 Initializing Metal device caps: NVIDIA GeForce GT 650M
 Initialize mono
 Mono path[0] = '/Applications/Unity/EditorsFolder/2021.1.12f1/Unity.app/Contents/Managed'
 Mono path[1] = '/Applications/Unity/EditorsFolder/2021.1.12f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = '/Applications/Unity/EditorsFolder/2021.1.12f1/Unity.app/Contents/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56612
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56934
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: /Applications/Unity/EditorsFolder/2021.1.12f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
-Registered in 0.000896 seconds.
+Registered in 0.034485 seconds.
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 59.05 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 58.48 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in 10.050 seconds
+- Completed reload, in 16.931 seconds
 Domain Reload Profiling:
-	ReloadAssembly (10051ms)
-		BeginReloadAssembly (67ms)
+	ReloadAssembly (16931ms)
+		BeginReloadAssembly (174ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (1400ms)
-			LoadAssemblies (344ms)
+		EndReloadAssembly (935ms)
+			LoadAssemblies (182ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (350ms)
+			SetupTypeCache (364ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (76ms)
-			SetupLoadedEditorAssemblies (597ms)
+			RebuildScriptCaches (74ms)
+			SetupLoadedEditorAssemblies (381ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (11ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (59ms)
 				BeforeProcessingInitializeOnLoad (3ms)
-				ProcessInitializeOnLoadAttributes (464ms)
-				ProcessInitializeOnLoadMethodAttributes (60ms)
+				ProcessInitializeOnLoadAttributes (226ms)
+				ProcessInitializeOnLoadMethodAttributes (82ms)
 				AfterProcessingInitializeOnLoad (0ms)
-				EditorAssembliesLoaded (0ms)
+				EditorAssembliesLoaded (1ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.386435 seconds.
+Registered in 0.102117 seconds.

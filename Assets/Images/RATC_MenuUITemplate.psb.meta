@@ -1,0 +1,495 @@
+fileFormatVersion: 2
+guid: a2da0c0f80f35406e989fe9c940498c3
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    isReadable: 0
+    streamingMipmaps: 1
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  spriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 0, y: 0}
+  mosaicSpriteImportData: []
+  rigSpriteImportData:
+  - name: Credits
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3527
+      y: 1416
+      width: 355
+      height: 108
+    spriteID: 910d334f2461f4828be57ac3ec234561
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 2082, y: 941}
+  - name: Quit Game
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2744
+      y: 1532
+      width: 464
+      height: 111
+    spriteID: b27979dc0ce1642e1aa07ca848fdc35f
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1090, y: 1332}
+  - name: Settings
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3571
+      y: 1651
+      width: 408
+      height: 108
+    spriteID: 6b18c9f99551d421d8def7868af2d1da
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1644, y: 888}
+  - name: Start New Game
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2744
+      y: 1416
+      width: 775
+      height: 108
+    spriteID: fa8a79a19895e4906b8191f2a4ad7cb0
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1264, y: 338}
+  - name: Highlighter
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2744
+      y: 1226
+      width: 1101
+      height: 182
+    spriteID: 6d224184a501b4a26a849d9291c1c2a5
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1397, y: 501}
+  - name: Menu Pane
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2744
+      y: 4
+      width: 1214
+      height: 1214
+    spriteID: 991591889dc9c4ffd8938c915fc52eaf
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1453, y: -88}
+  - name: Cat
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2744
+      y: 1651
+      width: 270
+      height: 179
+    spriteID: ba7e66930d0014b438c97a056795630c
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 2018, y: 639}
+  - name: Tat
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3301
+      y: 1651
+      width: 262
+      height: 175
+    spriteID: e45a9e31dc5fd4e2d8027983e3fed5e1
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 2666, y: 408}
+  - name: A
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3987
+      y: 1651
+      width: 96
+      height: 175
+    spriteID: c4b8037f0ebe24485988939a37041231
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 3213, y: 179}
+  - name: 'Rat '
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3022
+      y: 1651
+      width: 271
+      height: 175
+    spriteID: db5e4a6895e1f45709f6007d31a060f2
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 2275, y: -50}
+  - name: BGPane
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 2732
+      height: 2048
+    spriteID: b90f3565e7a5b49989cd96ec49a99ec7
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 4, y: 4}
+  - name: Layer 1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4091
+      y: 1651
+      width: 0
+      height: 0
+    spriteID: da6fc847ce379421fb30d118c444bd41
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1359, y: -397}
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    boneReadOnly: 0
+  sharedRigSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    boneReadOnly: 0
+  platformSettings: []
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  importedTextureWidth: 2048
+  importedTextureHeight: 2048
+  documentSize: {x: 2732, y: 2048}
+  paperDollMode: 0
+  keepDupilcateSpriteName: 1
+  skeletonAssetReferenceID: 
+  spriteCategoryList:
+    categories: []
+  textureActualWidth: 4096
+  textureActualHeight: 4096
+  spritePackingTag: 
+  resliceFromLayer: 0
+  mosaicPSDLayers: []
+  rigPSDLayers:
+  - name: Menu Items
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: 
+    layerID: 24
+    mosaicPosition: {x: 0, y: 0}
+  - name: Credits
+    spriteName: Credits
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 910d334f2461f4828be57ac3ec234561
+    layerID: 22
+    mosaicPosition: {x: 3527, y: 1416}
+  - name: Quit Game
+    spriteName: Quit Game
+    isGroup: 0
+    parentIndex: 0
+    spriteID: b27979dc0ce1642e1aa07ca848fdc35f
+    layerID: 21
+    mosaicPosition: {x: 2744, y: 1532}
+  - name: Settings
+    spriteName: Settings
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 6b18c9f99551d421d8def7868af2d1da
+    layerID: 20
+    mosaicPosition: {x: 3571, y: 1651}
+  - name: Start New Game
+    spriteName: Start New Game
+    isGroup: 0
+    parentIndex: 0
+    spriteID: fa8a79a19895e4906b8191f2a4ad7cb0
+    layerID: 19
+    mosaicPosition: {x: 2744, y: 1416}
+  - name: Highlighter
+    spriteName: Highlighter
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 6d224184a501b4a26a849d9291c1c2a5
+    layerID: 23
+    mosaicPosition: {x: 2744, y: 1226}
+  - name: Menu Pane
+    spriteName: Menu Pane
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 991591889dc9c4ffd8938c915fc52eaf
+    layerID: 18
+    mosaicPosition: {x: 2744, y: 4}
+  - name: Title
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: 
+    layerID: 16
+    mosaicPosition: {x: 0, y: 0}
+  - name: Cat
+    spriteName: Cat
+    isGroup: 0
+    parentIndex: 7
+    spriteID: ba7e66930d0014b438c97a056795630c
+    layerID: 15
+    mosaicPosition: {x: 2744, y: 1651}
+  - name: Tat
+    spriteName: Tat
+    isGroup: 0
+    parentIndex: 7
+    spriteID: e45a9e31dc5fd4e2d8027983e3fed5e1
+    layerID: 14
+    mosaicPosition: {x: 3301, y: 1651}
+  - name: A
+    spriteName: A
+    isGroup: 0
+    parentIndex: 7
+    spriteID: c4b8037f0ebe24485988939a37041231
+    layerID: 13
+    mosaicPosition: {x: 3987, y: 1651}
+  - name: 'Rat '
+    spriteName: 'Rat '
+    isGroup: 0
+    parentIndex: 7
+    spriteID: db5e4a6895e1f45709f6007d31a060f2
+    layerID: 10
+    mosaicPosition: {x: 3022, y: 1651}
+  - name: BGPane
+    spriteName: BGPane
+    isGroup: 0
+    parentIndex: -1
+    spriteID: b90f3565e7a5b49989cd96ec49a99ec7
+    layerID: 5
+    mosaicPosition: {x: 4, y: 4}
+  - name: Layer 1
+    spriteName: Layer 1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: da6fc847ce379421fb30d118c444bd41
+    layerID: 2
+    mosaicPosition: {x: 4091, y: 1651}
+  sharedRigPSDLayers: []
+  generateGOHierarchy: 0
+  textureAssetName: RATC_MenuUITemplate Texture
+  prefabAssetName: RATC_MenuUITemplate Prefab
+  spriteLibAssetName: RATC_MenuUITemplate Sprite Lib
+  skeletonAssetName: RATC_MenuUITemplate Skeleton
+  secondarySpriteTextures: []
