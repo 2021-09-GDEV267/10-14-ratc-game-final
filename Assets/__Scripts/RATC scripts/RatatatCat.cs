@@ -5,11 +5,90 @@ using UnityEngine.SceneManagement;
 
 public enum CurrentTurnPhase
 {
+    shuffleAndDeal,
+    /// <summary>
+    /// Default State
+    /// </summary>
     idle,
-    pre,
+
+    /// <summary>
+    /// Shuffling and dealing of pregame
+    /// </summary>
+    allPreGameView,
+
+    /// <summary>
+    /// Single Person view of their hand with cards revealed
+    /// </summary>
+    playerPregameView,
+
+
+
+    /// <summary>
+    /// Start Screen for Player to select where to draw from
+    /// </summary>
+    selectDrawFrom,
+
+    /// <summary>
+    /// card is selected from pickup start choice
+    /// </summary>
+    enlargeSelectedCard,
+    //Card comes from Deck and confirmed or right from Discard
+
+    /// <summary>
+    /// reveal number card now make choice where to put it in hand/discard
+    /// </summary>
+    revealNumCard,
+
+    /// <summary>
+    /// reveal draw2 card now select discard, and draw card first card
+    /// </summary>
+    revealSpecialCard_draw2,
+
+    /// <summary>         
+    /// reveal card A now select discard or place in hand to put it
+    /// </summary>
+    draw2SelectDrawFromCardA,
+
+    /// <summary>
+    /// reveal card B now select discard or place in hand to put it
+    /// </summary>
+    draw2SelectDrawFromCardB,
+
+    /// <summary>
+    /// Reveal peek card now select which player to peek at
+    /// </summary>
+    revealSpecialCard_peek,
+
+    /// <summary>
+    /// Select which card in player's hand to look at
+    /// </summary>
+    peekSelectShowCard,
+
+    /// <summary> 
+    ///reveal swap2 card now select card in hand to swap
+    /// </summary>
+    revealSpecialCard_swap,
+
+    /// <summary>
+    /// select where to place card selected
+    /// </summary>
+    placeCardSelected,
+
+    /// <summary> 
+    ///EndTurnPrompt
+    /// </summary>
+    EndTurnPrompt,
+
+   
+
+
+    /// <summary>
+    /// for if all players have an assigned state vs just a general game state,
+    /// this is when the player is waiting for their turn
+    /// </summary>
     waiting,
     post,
-    gameOver
+
 }
 public enum CurrentPlayerTurn
 {
@@ -21,6 +100,7 @@ public enum CurrentPlayerTurn
     Scoring,
    
 }
+
 
 /// <summary>
 /// struct to organize player's cards and know them at all times.
@@ -98,8 +178,18 @@ public class RatatatCat : MonoBehaviour
 
     public void CardClicked(CardRATC tCB)
     {
-     //   if (CURRENT_PLAYER.type != PlayerType.human) return;
-        if (phase == CurrentTurnPhase.waiting) return;
+        //need to switch through player current turn phase in order to see what they clicked is functional
+        switch (phase)
+        {
+            case CurrentTurnPhase.idle:
+
+                //example
+
+                break;
+        }
+
+            //   if (CURRENT_PLAYER.type != PlayerType.human) return;
+            if (phase == CurrentTurnPhase.waiting) return;
 
         switch (tCB.state)
         {
