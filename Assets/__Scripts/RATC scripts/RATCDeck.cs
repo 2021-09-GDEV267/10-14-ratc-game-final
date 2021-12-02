@@ -221,13 +221,13 @@ public class RATCDeck : MonoBehaviour
 
         // Assign basic values to the Card
         card.name = cardNames[cNum];
-        
-        card.rank = int.Parse(card.name.Substring(1));
+
+        card.rank = int.Parse(card.name);
 
         // Pull the CardDefinition for this card
         card.def = GetCardDefinitionByRank(card.rank);
 
-        AddDecorators(card);
+      //  AddDecorators(card);
         AddFace(card);
         AddBack(card);
 
