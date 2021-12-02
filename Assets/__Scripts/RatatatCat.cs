@@ -30,6 +30,7 @@ public class RatatatCat : MonoBehaviour
     public GameObject transition;
     public GameObject startGame;
     public GameObject cardShow;
+    public bool pregame = true;
 
     [Header("Set Dynamically")]
     public Deck deck;
@@ -79,7 +80,7 @@ public class RatatatCat : MonoBehaviour
         }
     }
 
-    void LayoutGame()
+    public void LayoutGame()
     {
         if (layoutAnchor == null)
         {
@@ -114,7 +115,10 @@ public class RatatatCat : MonoBehaviour
                 players[(j + 1) % 4].AddCard(tCC);
             }
         }
-        Invoke("DrawFirstTarget", drawTimeStagger * (numStartingCards * 4 + 4));
+        if (pregame == true)
+        {
+            Invoke("DrawFirstTarget", drawTimeStagger * (numStartingCards * 4 + 4));
+        }
     }
 
     public void DrawFirstTarget()
