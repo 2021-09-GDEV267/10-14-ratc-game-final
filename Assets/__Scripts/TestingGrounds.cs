@@ -14,7 +14,17 @@ public class TestingGrounds : MonoBehaviour
     public int swapNum2;
     void Start()
     {
+        RatatatCat.S.MoveToDiscard(RatatatCat.S.Draw());
+    }
 
+    public void SwapDraw(CardCat discard, CardCat hand, int handIndex)
+    {
+        player = RatatatCat.CURRENT_PLAYER;
+        swap = discard;
+        swap2 = hand;
+        swapNum = handIndex;
+        player.hand[swapNum] = swap;
+        RatatatCat.S.MoveToDiscard(swap2);
     }
 
     void Update()
@@ -117,6 +127,12 @@ public class TestingGrounds : MonoBehaviour
             player.hand[swapNum] = swap2;
             player2.hand[swapNum2] = swap;
             Debug.Log("Detected D");
+        }
+
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            RatatatCat.CURRENT_PLAYER = RatatatCat.S.players[0];
+            SwapDraw(RatatatCat.S.discardpile[0], RatatatCat.S.players[0].hand[0], 0);
         }
     }
 }
