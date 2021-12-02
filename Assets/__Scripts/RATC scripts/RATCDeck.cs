@@ -42,14 +42,6 @@ public class RATCDeck : MonoBehaviour
             deckAnchor = anchorGO.transform;
         }
 
-        //// Initialize the Dictionary of SuitSprites with necessary Sprites
-        //dictSuits = new Dictionary<string, Sprite>()
-        //{
-        //    {"C", suitClub},
-        //    {"D", suitDiamond},
-        //    {"H", suitHeart},
-        //    {"S", suitSpade}
-        //};
 
         ReadDeck(RatatatCatDeckText);
 
@@ -65,17 +57,21 @@ public class RATCDeck : MonoBehaviour
         // This prints a test line to show you how xmlr can be used.
         // For more information read about XML in the Useful Concepts Appendix
         string s = "xml[0] decorator[o]";
+        /**
         s += "type=" + xmlr.xml["xml"][0]["decorator"][0].att("type");
         s += "x=" + xmlr.xml["xml"][0]["decorator"][0].att("x");
         s += "y=" + xmlr.xml["xml"][0]["decorator"][0].att("y");
         s += "scale=" + xmlr.xml["xml"][0]["decorator"][0].att("scale");
+        **/
         print(s);
 
         // Read decorators for all Cards
         decorators = new List<Decorator>(); // Init the list of Decorators
         // Grab an PT_XMLHashList of all <decorator>s in the XML file
+
         PT_XMLHashList xDecos = xmlr.xml["xml"][0]["decorator"];
         Decorator deco;
+
         for (int i = 0; i < xDecos.Count; i++)
         {
             // For each <decorator> in the XML
@@ -105,8 +101,20 @@ public class RATCDeck : MonoBehaviour
             CardDefinition cDef = new CardDefinition();
             // Parse the attribute values and add them to cDef
             cDef.rank = int.Parse(xCardDefs[i].att("rank"));
-            // Grab an PT_XMLHashList of all the <pip>s on this <card>
+            //faces data is how we can show sprites in the center of cards.
+            // we could limit faces to just special cards but for now they all have faces
+            if (xCardDefs[i].HasAtt("face"))
+            {
+                cDef.face = xCardDefs[i].att("face");
+            }
 
+            if (xCardDefs[i].HasAtt("special"))
+            {
+                cDef.special = xCardDefs[i].att("special");
+            }
+
+            // Grab an PT_XMLHashList of all the <pip>s on this <card>
+            /**
            //pips data are one of the ways we can show sprites in center
             PT_XMLHashList xPips = xCardDefs[i]["pip"];
             //pips are located in center of each card.
@@ -129,17 +137,7 @@ public class RATCDeck : MonoBehaviour
                     cDef.pips.Add(deco);
                 }
             }
-            //faces data is another way we can show sprites in the center of cards.
-            // we could limit faces to just special cards but for now they all have faces
-            if (xCardDefs[i].HasAtt("face"))
-            {
-                cDef.face = xCardDefs[i].att("face");
-            }
-
-            if (xCardDefs[i].HasAtt("special"))
-            {
-                cDef.special = xCardDefs[i].att("special");
-            }
+            */
             cardDefs.Add(cDef);
         }
     }
@@ -223,18 +221,13 @@ public class RATCDeck : MonoBehaviour
 
         // Assign basic values to the Card
         card.name = cardNames[cNum];
-        card.suit = card.name[0].ToString();
+        
         card.rank = int.Parse(card.name.Substring(1));
-        if (card.suit == "D" || card.suit == "H")
-        {
-            card.colS = "Red";
-            card.color = Color.red;
-        }
+
         // Pull the CardDefinition for this card
         card.def = GetCardDefinitionByRank(card.rank);
 
         AddDecorators(card);
-        AddPips(card);
         AddFace(card);
         AddBack(card);
 
