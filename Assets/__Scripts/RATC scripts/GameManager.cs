@@ -6,19 +6,37 @@ using UnityEngine;
 
 	public enum GameStates { StartMenu, PreGame, CoreGameLoop, Scoring, Celebrating }
 
+
+public struct CardData
+{
+	string cardName;
+	int PlayerNumber;
+	int placeInPlayersHand;
+	int rank;
+}
+
+
 	public struct PlayerNames { public string Player1, Player2, Player3, Player4; }
-public struct PlayersCurrentHand { public int Card1, Card2, Card3, Card4; }
+public struct PlayersCurrentHand { public CardData Card1, Card2, Card3, Card4; }
 	/// <summary>
 	/// Singleton which manages game states for the overall game.
     /// </summary>
 	public class GameManager : Singleton<GameManager>
 	{
 
+	//list of all the cards in case we need to know what cards didnt make it to hand.
+	//this will be updated when needed from outside
+	public List<CardRATC> AllTheCards;
+
+	//list of cards in case we need to know what cards didnt make it to hand.
+    //this will be updated when needed from outside
+	public List<CardRATC> CardsNotInHand;
+
 		static public GameManager GM;
 		public GameStates state = GameStates.StartMenu;
 
-	public PlayerNames allPlayerNames;
 
+	public PlayerNames allPlayerNames;
 	public PlayersCurrentHand Player1Hand, Player2Hand, Player3Hand, Player4Hand;
 
 
