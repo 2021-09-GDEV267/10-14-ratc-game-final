@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Input/TouchControls.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/__Scripts/RATC scripts/Input/TouchControls.inputactions'
 
 using System;
 using System.Collections;

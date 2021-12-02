@@ -16,9 +16,9 @@ public class RATCDeck : MonoBehaviour
     public Sprite[] faceSprites;
     public Sprite[] rankSprites;
     public Sprite cardBack;
-    public Sprite cardBackGold;
+
     public Sprite cardFront;
-    public Sprite cardFrontGold;
+
     // Prefabs
     public GameObject prefabCard;
     public GameObject prefabSprite;

@@ -5,7 +5,11 @@ using UnityEngine.SceneManagement;
 
 public enum CurrentTurnPhase
 {
+    /// <summary>
+    /// Shuffle and Deal State
+    /// </summary>
     shuffleAndDeal,
+
     /// <summary>
     /// Default State
     /// </summary>
@@ -21,8 +25,6 @@ public enum CurrentTurnPhase
     /// </summary>
     playerPregameView,
 
-
-
     /// <summary>
     /// Start Screen for Player to select where to draw from
     /// </summary>
@@ -32,8 +34,8 @@ public enum CurrentTurnPhase
     /// card is selected from pickup start choice
     /// </summary>
     enlargeSelectedCard,
-    //Card comes from Deck and confirmed or right from Discard
 
+    //Card comes from Deck and confirmed or right from Discard
     /// <summary>
     /// reveal number card now make choice where to put it in hand/discard
     /// </summary>
@@ -79,9 +81,6 @@ public enum CurrentTurnPhase
     /// </summary>
     EndTurnPrompt,
 
-   
-
-
     /// <summary>
     /// for if all players have an assigned state vs just a general game state,
     /// this is when the player is waiting for their turn
@@ -90,6 +89,9 @@ public enum CurrentTurnPhase
     post,
 
 }
+/// <summary>
+/// Whos player turn is it.
+/// </summary>
 public enum CurrentPlayerTurn
 {
     Dealer,
@@ -97,8 +99,11 @@ public enum CurrentPlayerTurn
     East,
     South,
     West,
+
+    /// <summary>
+    /// this is to say there is no current player but in scoring section of game
+    /// </summary>
     Scoring,
-   
 }
 
 
@@ -127,21 +132,22 @@ public class RatatatCat : MonoBehaviour
     public TextAsset layoutXML;
 
     public Vector3 layoutCenter = Vector3.zero;
- //   public float handFanDegrees = 10f;
- //   public int numStartingCards = 4;
+
     public float drawTimeStagger = 0.1f;
 
     [Header("Set Dynamically")]
     public RATCDeck deck;
+    public List<CardRATC> allCards;
     public List<CardRATC> drawPile;
     public List<CardRATC> discardPile;
+
     public List<Player> players;
     public CardRATC targetCard;
+
     public CurrentTurnPhase phase = CurrentTurnPhase.idle;
-//    public TurnPhase phase = TurnPhase.idle;
+    // public TurnPhase phase = TurnPhase.idle;
 
-
-    //didnt touch layout
+    // didnt touch layout
     private RATCLayout layout;
     private Transform layoutAnchor;
 
@@ -159,6 +165,7 @@ public class RatatatCat : MonoBehaviour
         layout = GetComponent<RATCLayout>(); // Get the Layout
         layout.ReadLayout(layoutXML.text); // Pass LayoutXML to it
 
+        //change from general cards to RATC cards
         drawPile = UpgradeCardsList(deck.cards);
         LayoutGame();
     }
@@ -172,6 +179,7 @@ public class RatatatCat : MonoBehaviour
         }
         return (lCB);
     }
+
     void LayoutGame() {
         print("LayoutGame");
             }
