@@ -17,14 +17,42 @@ public class TestingGrounds : MonoBehaviour
         RatatatCat.S.MoveToDiscard(RatatatCat.S.Draw());
     }
 
-    public void SwapDraw(CardCat discard, CardCat hand, int handIndex)
+    public void SwapDiscard(CardCat discard, CardCat hand, int handIndex)
     {
         player = RatatatCat.CURRENT_PLAYER;
         swap = discard;
         swap2 = hand;
         swapNum = handIndex;
         player.hand[swapNum] = swap;
+        swap.state = CCState.toHand;
         RatatatCat.S.MoveToDiscard(swap2);
+        swap2.state = CCState.discard;
+    }
+
+    public void SwapDraw(CardCat draw, CardCat hand, int handIndex)
+    {
+        player = RatatatCat.CURRENT_PLAYER;
+        swap = draw;
+        swap2 = hand;
+        swapNum = handIndex;
+        player.hand[swapNum] = swap;
+        swap.state = CCState.toHand;
+        RatatatCat.S.MoveToDiscard(swap2);
+        swap2.state = CCState.discard;
+    }
+
+    public void SwapPlayer(CardCat handChoice, CardCat opponentChoice, CatPlayer opponent, int handIndex, int opponentIndex)
+    {
+        player = RatatatCat.CURRENT_PLAYER;
+        swap = handChoice;
+        player.hand[handIndex] = null;
+        swapNum = handIndex;
+        player2 = opponent;
+        swap2 = opponentChoice;
+        player.hand[opponentIndex] = null;
+        swapNum2 = opponentIndex;
+        player.hand[swapNum] = swap2;
+        player2.hand[swapNum2] = swap;
     }
 
     void Update()
@@ -132,7 +160,18 @@ public class TestingGrounds : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.S))
         {
             RatatatCat.CURRENT_PLAYER = RatatatCat.S.players[0];
-            SwapDraw(RatatatCat.S.discardpile[0], RatatatCat.S.players[0].hand[0], 0);
+            SwapDiscard(RatatatCat.S.discardpile[0], RatatatCat.S.players[0].hand[0], 0);
+        }
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            RatatatCat.CURRENT_PLAYER = RatatatCat.S.players[0];
+            SwapDraw(RatatatCat.S.Draw(), RatatatCat.S.players[0].hand[0], 0);
+        }
+        if (Input.GetKeyUp(KeyCode.F))
+        {
+            RatatatCat.CURRENT_PLAYER = RatatatCat.S.players[0];
+
+            SwapPlayer(RatatatCat.CURRENT_PLAYER.hand[1], RatatatCat.S.players[1].hand[0], RatatatCat.S.players[1], 1,0);
         }
     }
 }
