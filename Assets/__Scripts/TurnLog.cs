@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class TurnLog : MonoBehaviour
@@ -37,6 +38,16 @@ public class TurnLog : MonoBehaviour
         {
             print(t.toString());
         }
+    }
+
+    public void matchReportToFile()
+    {
+        List<string> matchReportString = new List<string>();
+        foreach(Turn t in allTurns)
+        {
+            matchReportString.Add(t.toString());
+        }
+        System.IO.File.WriteAllLines("matchReport.txt", matchReportString);
     }
 
 
