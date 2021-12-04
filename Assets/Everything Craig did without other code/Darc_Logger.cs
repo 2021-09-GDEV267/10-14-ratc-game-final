@@ -1,8 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using darcproducts;
 
-//event to set which pile player picked from
+namespace darcproducts
+{
+public class Darc_Logger : MonoBehaviour
+{
+    //event to set which pile player picked from
 public enum PickEvent
 {
     draw,
@@ -22,18 +27,18 @@ public enum PlayEvent
 public class Log
 {
     //log constructor used for drawTwo and discard 
-    public Log(int playerNumber, PickEvent pickEvent, PlayEvent playEvent)
+    public Log(Darc_PlayerRATC player, PickEvent pickEvent, PlayEvent playEvent)
     {
         _pickEvent = pickEvent;
         _playEvent = playEvent;
-        _playerNumber = playerNumber;
+        _playerNumber = player.playerNumber;
     }
 
     //log constructor for replace and peek
-    public Log(int playerNumber, PickEvent pickEvent, PlayEvent playEvent, GameObject card)
+    public Log(Darc_PlayerRATC player, PickEvent pickEvent, PlayEvent playEvent, Darc_CardRATC card)
     {
         _pickEvent = pickEvent;
-        _playerNumber = playerNumber;
+        _playerNumber = player.playerNumber;
         _playEvent = playEvent;
        
         switch (playEvent)
@@ -48,12 +53,12 @@ public class Log
     }
 
     //log constuctor used for swap
-    public Log(int playerNumber, PickEvent pickEvent, GameObject playerCard, GameObject opponentCard)
+    public Log(Darc_PlayerRATC player, PickEvent pickEvent, Darc_CardRATC playerCard, Darc_CardRATC opponentCard)
     {
         _pickEvent = pickEvent;
-        _playerNumber = playerNumber;
+        _playerNumber = player.playerNumber;
         _playEvent = PlayEvent.swap;
-        _cardsSwapped = new GameObject[2];
+        _cardsSwapped = new Darc_CardRATC[2];
         _cardsSwapped[0] = playerCard;
         _cardsSwapped[1] = opponentCard;
     }
@@ -61,9 +66,9 @@ public class Log
     PickEvent _pickEvent;
     PlayEvent _playEvent;
 
-    GameObject _cardPeeked;
-    GameObject _cardReplaced;
-    GameObject[] _cardsSwapped;
+    Darc_CardRATC _cardPeeked;
+    Darc_CardRATC _cardReplaced;
+    Darc_CardRATC[] _cardsSwapped;
 
     int _playerNumber;
     int _logNumber;
@@ -78,16 +83,16 @@ public class Log
         set => _logNumber = value;
     }
 
-    public GameObject GetCardPeeked() => _cardPeeked;
+    public Darc_CardRATC GetCardPeeked() => _cardPeeked;
 
-    public GameObject GetCardSwapped(int indx)
+    public Darc_CardRATC GetCardSwapped(int indx)
     {
         if (indx >= 0 && indx < _cardsSwapped.Length)
             return _cardsSwapped[indx];
         return null;
     }
 
-    public GameObject GetReplaced() => _cardReplaced;
+    public Darc_CardRATC GetReplaced() => _cardReplaced;
 
     public bool HasReplaced() => _cardReplaced != null;
 
@@ -99,11 +104,12 @@ public class Log
 
     public int PlayerNumber => _playerNumber;
 }
+}
 
 public class Logger : MonoBehaviour
 {
     public static Logger S;
-    [SerializeField] GameObject logCanvas;
+    [SerializeField] GameObject logPanel;
     [SerializeField] GameObject logButton;
     List<Log> gameLog = new List<Log>();
 
@@ -118,22 +124,13 @@ public class Logger : MonoBehaviour
     public void DisplayLog()
     {
         logButton.SetActive(false);
-        logCanvas.SetActive(true);
+        logPanel.SetActive(true);
     }
 
     public void HideLog()
     {
-        logCanvas.SetActive(false);
+        logPanel.SetActive(false);
         logButton.SetActive(true);
-    }
-
-    public void SwitchDisplayLog()
-    {
-        logButton.SetActive(true);
-        if (logCanvas.activeSelf)
-            logCanvas.SetActive(false);
-        else 
-            logCanvas.SetActive(true);
     }
 
     public void PrintLogs()
@@ -151,3 +148,5 @@ public class Logger : MonoBehaviour
         }
     }
 }
+}
+
