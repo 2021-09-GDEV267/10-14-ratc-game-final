@@ -1,0 +1,922 @@
+fileFormatVersion: 2
+guid: a974add5c39c748b3985cc2f0ae23b3d
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    isReadable: 0
+    streamingMipmaps: 1
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  spriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 0, y: 0}
+  mosaicSpriteImportData: []
+  rigSpriteImportData:
+  - name: crBack
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3703
+      y: 3022
+      width: 232
+      height: 107
+    spriteID: e8d9d46f1d23c469c943eeddb41698b2
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 2463, y: 2641}
+  - name: Credits
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3231
+      y: 1226
+      width: 590
+      height: 179
+    spriteID: b34dc0f81574f4ce5ac1bda1d748b853
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 2717, y: -285}
+  - name: Henry S. Matt S. Chris U.
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3703
+      y: 2060
+      width: 386
+      height: 468
+    spriteID: 94f788938cd9140319018a2e8a33bba1
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 2142, y: 1360}
+  - name: 'Craig H. Amaury R. Ben S. '
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2744
+      y: 1226
+      width: 479
+      height: 467
+    spriteID: 2340fb25237524266b103c7c2b022cac
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 2007, y: 526}
+  - name: RVCC GameDev 267 class fall 2021
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 3757
+      width: 1658
+      height: 108
+    spriteID: 77b5c848d39ce4f66b60b40f5232bea6
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -532, y: 2490}
+  - name: CreditsPane
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 2060
+      width: 2156
+      height: 1689
+    spriteID: 757fbefc405e74dba8150a4f41941ed6
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -288, y: 1873}
+  - name: seBack
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3216
+      y: 1891
+      width: 232
+      height: 107
+    spriteID: 6ee90f109009544abb705551034841f2
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1906, y: 1207}
+  - name: Volume up
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3943
+      y: 3022
+      width: 85
+      height: 86
+    spriteID: 10efd51ab373c4494a047e4c86b04e14
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 2427, y: 1882}
+  - name: Volume down
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3943
+      y: 3116
+      width: 45
+      height: 17
+    spriteID: 9ea3a8fb642c1475db7b1d1afc116d5a
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 2672, y: 1942}
+  - name: ButtonVDown
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3853
+      y: 1701
+      width: 183
+      height: 180
+    spriteID: 7919a961a918441b3958fc461ed3a4c0
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 2651, y: 606}
+  - name: ButonVHiLight
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2168
+      y: 3164
+      width: 183
+      height: 180
+    spriteID: 036a60637041d4aad98f6ce49c48edec
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 702, y: 2070}
+  - name: ButtonVUp
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2359
+      y: 3164
+      width: 183
+      height: 180
+    spriteID: 817c44fd11a55451980f1459f024e4d9
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 893, y: 2070}
+  - name: Volume Control
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3231
+      y: 1529
+      width: 778
+      height: 107
+    spriteID: 4dd2e9865fac44f01ab580c5f95ac198
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 2194, y: 183}
+  - name: Rectangle 1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2168
+      y: 2060
+      width: 1527
+      height: 1096
+    spriteID: d14ae5be9cc3749c4b444c21067c5d9f
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1488, y: 1532}
+  - name: Credits
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3703
+      y: 2906
+      width: 355
+      height: 108
+    spriteID: a8a75f0270048479695243bdc508b921
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 2258, y: 2431}
+  - name: Quit Game
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2744
+      y: 1891
+      width: 464
+      height: 111
+    spriteID: d6a0f8be1a4a048768ef4f637267982f
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1090, y: 1691}
+  - name: Settings
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1670
+      y: 3757
+      width: 408
+      height: 108
+    spriteID: 087cd38d54cca4d188210c5e25e61e1c
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -257, y: 2994}
+  - name: Start New Game
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3231
+      y: 1413
+      width: 775
+      height: 108
+    spriteID: ace99d59dc6bb443a9a10bcfd6fea5d5
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1751, y: 335}
+  - name: Highlighter
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2744
+      y: 1701
+      width: 1101
+      height: 182
+    spriteID: eedde391a024d49cfb05671d43a30551
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1397, y: 976}
+  - name: Menu Pane
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2744
+      y: 4
+      width: 1214
+      height: 1214
+    spriteID: 2f4dc22a0acfd4282b0eabc604e694b8
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1453, y: -88}
+  - name: Cat
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3703
+      y: 2536
+      width: 270
+      height: 179
+    spriteID: 08d563d532af1415998d2a6ddc3ff9f1
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 2977, y: 1524}
+  - name: Tat
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3829
+      y: 1226
+      width: 262
+      height: 175
+    spriteID: 33171dfce4c524ec3b2d0d9ef3affc6f
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 3194, y: -17}
+  - name: A
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3982
+      y: 2723
+      width: 96
+      height: 175
+    spriteID: 7a77816731f0749a0b3e3166880f5ee3
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 3208, y: 1251}
+  - name: 'Rat '
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3703
+      y: 2723
+      width: 271
+      height: 175
+    spriteID: ee599118db9ea441597e0c15c5fe49af
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 2956, y: 1022}
+  - name: BGPane
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 2732
+      height: 2048
+    spriteID: 5aba455b835b44f1b8e93196a3e28223
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 4, y: 4}
+  - name: Layer 1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3996
+      y: 3116
+      width: 0
+      height: 0
+    spriteID: 74ccf6a282b99446da94c7412b2ed725
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1264, y: 1068}
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    boneReadOnly: 0
+  sharedRigSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    boneReadOnly: 0
+  platformSettings: []
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  importedTextureWidth: 2048
+  importedTextureHeight: 2048
+  documentSize: {x: 2732, y: 2048}
+  paperDollMode: 0
+  keepDupilcateSpriteName: 1
+  skeletonAssetReferenceID: 
+  spriteCategoryList:
+    categories: []
+  textureActualWidth: 4096
+  textureActualHeight: 4096
+  spritePackingTag: 
+  resliceFromLayer: 0
+  mosaicPSDLayers: []
+  rigPSDLayers:
+  - name: Credits Panel
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: 00000000000000000000000000000000
+    layerID: 51
+    mosaicPosition: {x: 0, y: 0}
+  - name: crBack
+    spriteName: crBack
+    isGroup: 0
+    parentIndex: 0
+    spriteID: e8d9d46f1d23c469c943eeddb41698b2
+    layerID: 53
+    mosaicPosition: {x: 3703, y: 3022}
+  - name: Credits
+    spriteName: Credits
+    isGroup: 0
+    parentIndex: 0
+    spriteID: b34dc0f81574f4ce5ac1bda1d748b853
+    layerID: 46
+    mosaicPosition: {x: 3231, y: 1226}
+  - name: Henry S. Matt S. Chris U.
+    spriteName: Henry S. Matt S. Chris U.
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 94f788938cd9140319018a2e8a33bba1
+    layerID: 50
+    mosaicPosition: {x: 3703, y: 2060}
+  - name: 'Craig H. Amaury R. Ben S. '
+    spriteName: 'Craig H. Amaury R. Ben S. '
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 2340fb25237524266b103c7c2b022cac
+    layerID: 49
+    mosaicPosition: {x: 2744, y: 1226}
+  - name: RVCC GameDev 267 class fall 2021
+    spriteName: RVCC GameDev 267 class fall 2021
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 77b5c848d39ce4f66b60b40f5232bea6
+    layerID: 48
+    mosaicPosition: {x: 4, y: 3757}
+  - name: CreditsPane
+    spriteName: CreditsPane
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 757fbefc405e74dba8150a4f41941ed6
+    layerID: 44
+    mosaicPosition: {x: 4, y: 2060}
+  - name: Settings Panel
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: 00000000000000000000000000000000
+    layerID: 42
+    mosaicPosition: {x: 0, y: 0}
+  - name: seBack
+    spriteName: seBack
+    isGroup: 0
+    parentIndex: 7
+    spriteID: 6ee90f109009544abb705551034841f2
+    layerID: 41
+    mosaicPosition: {x: 3216, y: 1891}
+  - name: Volume Controls
+    spriteName: 
+    isGroup: 1
+    parentIndex: 7
+    spriteID: 00000000000000000000000000000000
+    layerID: 39
+    mosaicPosition: {x: 0, y: 0}
+  - name: Volume up
+    spriteName: Volume up
+    isGroup: 0
+    parentIndex: 9
+    spriteID: 10efd51ab373c4494a047e4c86b04e14
+    layerID: 33
+    mosaicPosition: {x: 3943, y: 3022}
+  - name: Volume down
+    spriteName: Volume down
+    isGroup: 0
+    parentIndex: 9
+    spriteID: 9ea3a8fb642c1475db7b1d1afc116d5a
+    layerID: 35
+    mosaicPosition: {x: 3943, y: 3116}
+  - name: ButtonVDown
+    spriteName: ButtonVDown
+    isGroup: 0
+    parentIndex: 9
+    spriteID: 7919a961a918441b3958fc461ed3a4c0
+    layerID: 37
+    mosaicPosition: {x: 3853, y: 1701}
+  - name: ButonVHiLight
+    spriteName: ButonVHiLight
+    isGroup: 0
+    parentIndex: 9
+    spriteID: 036a60637041d4aad98f6ce49c48edec
+    layerID: 38
+    mosaicPosition: {x: 2168, y: 3164}
+  - name: ButtonVUp
+    spriteName: ButtonVUp
+    isGroup: 0
+    parentIndex: 9
+    spriteID: 817c44fd11a55451980f1459f024e4d9
+    layerID: 36
+    mosaicPosition: {x: 2359, y: 3164}
+  - name: Volume Control
+    spriteName: Volume Control
+    isGroup: 0
+    parentIndex: 9
+    spriteID: 4dd2e9865fac44f01ab580c5f95ac198
+    layerID: 28
+    mosaicPosition: {x: 3231, y: 1529}
+  - name: Rectangle 1
+    spriteName: Rectangle 1
+    isGroup: 0
+    parentIndex: 7
+    spriteID: d14ae5be9cc3749c4b444c21067c5d9f
+    layerID: 27
+    mosaicPosition: {x: 2168, y: 2060}
+  - name: Menu Items
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: 00000000000000000000000000000000
+    layerID: 24
+    mosaicPosition: {x: 0, y: 0}
+  - name: Credits
+    spriteName: Credits
+    isGroup: 0
+    parentIndex: 17
+    spriteID: a8a75f0270048479695243bdc508b921
+    layerID: 22
+    mosaicPosition: {x: 3703, y: 2906}
+  - name: Quit Game
+    spriteName: Quit Game
+    isGroup: 0
+    parentIndex: 17
+    spriteID: d6a0f8be1a4a048768ef4f637267982f
+    layerID: 21
+    mosaicPosition: {x: 2744, y: 1891}
+  - name: Settings
+    spriteName: Settings
+    isGroup: 0
+    parentIndex: 17
+    spriteID: 087cd38d54cca4d188210c5e25e61e1c
+    layerID: 20
+    mosaicPosition: {x: 1670, y: 3757}
+  - name: Start New Game
+    spriteName: Start New Game
+    isGroup: 0
+    parentIndex: 17
+    spriteID: ace99d59dc6bb443a9a10bcfd6fea5d5
+    layerID: 19
+    mosaicPosition: {x: 3231, y: 1413}
+  - name: Highlighter
+    spriteName: Highlighter
+    isGroup: 0
+    parentIndex: 17
+    spriteID: eedde391a024d49cfb05671d43a30551
+    layerID: 23
+    mosaicPosition: {x: 2744, y: 1701}
+  - name: Menu Pane
+    spriteName: Menu Pane
+    isGroup: 0
+    parentIndex: 17
+    spriteID: 2f4dc22a0acfd4282b0eabc604e694b8
+    layerID: 18
+    mosaicPosition: {x: 2744, y: 4}
+  - name: Title
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: 00000000000000000000000000000000
+    layerID: 16
+    mosaicPosition: {x: 0, y: 0}
+  - name: Cat
+    spriteName: Cat
+    isGroup: 0
+    parentIndex: 24
+    spriteID: 08d563d532af1415998d2a6ddc3ff9f1
+    layerID: 15
+    mosaicPosition: {x: 3703, y: 2536}
+  - name: Tat
+    spriteName: Tat
+    isGroup: 0
+    parentIndex: 24
+    spriteID: 33171dfce4c524ec3b2d0d9ef3affc6f
+    layerID: 14
+    mosaicPosition: {x: 3829, y: 1226}
+  - name: A
+    spriteName: A
+    isGroup: 0
+    parentIndex: 24
+    spriteID: 7a77816731f0749a0b3e3166880f5ee3
+    layerID: 13
+    mosaicPosition: {x: 3982, y: 2723}
+  - name: 'Rat '
+    spriteName: 'Rat '
+    isGroup: 0
+    parentIndex: 24
+    spriteID: ee599118db9ea441597e0c15c5fe49af
+    layerID: 10
+    mosaicPosition: {x: 3703, y: 2723}
+  - name: BGPane
+    spriteName: BGPane
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 5aba455b835b44f1b8e93196a3e28223
+    layerID: 5
+    mosaicPosition: {x: 4, y: 4}
+  - name: Layer 1
+    spriteName: Layer 1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 74ccf6a282b99446da94c7412b2ed725
+    layerID: 2
+    mosaicPosition: {x: 3996, y: 3116}
+  sharedRigPSDLayers: []
+  generateGOHierarchy: 0
+  textureAssetName: RATC_MenuUITemplate 1 Texture
+  prefabAssetName: RATC_MenuUITemplate 1 Prefab
+  spriteLibAssetName: RATC_MenuUITemplate 1 Sprite Lib
+  skeletonAssetName: RATC_MenuUITemplate 1 Skeleton
+  secondarySpriteTextures: []

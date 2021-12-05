@@ -1,0 +1,33 @@
+{
+    "name": "TouchControls",
+    "maps": [
+        {
+            "name": "TouchPad",
+            "id": "c9a6b5e5-4e4a-4aa8-ba38-c17487a04d47",
+            "actions": [
+                {
+                    "name": "TouchPress",
+                    "type": "PassThrough",
+                    "id": "41bc8874-6db8-4460-b6ac-0000d6d0e525",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e8f2c549-7e28-4c92-bf9c-d77b0a199bba",
+                    "path": "<Touchscreen>/press",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TouchPress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
