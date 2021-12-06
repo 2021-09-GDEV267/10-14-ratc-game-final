@@ -12,34 +12,34 @@
 	<!--Probably need to be updated when ratatatcat sprites used -->
 
 	<!-- Number Cards: -->
-	<card rank="0" face="CatCard_0">
+	<card rank="0" face="CatCard_0" amount="3">
 	</card>
 
-	<card rank="1" face="CatCard_1">
+	<card rank="1" face="CatCard_1" amount="3">
 	</card>
 
-	<card rank="2" face="CatCard_2">
+	<card rank="2" face="CatCard_2" amount="3">
 	</card>
 
-	<card rank="3" face="CatCard_3">
+	<card rank="3" face="CatCard_3" amount="3">
 	</card>
 
-	<card rank="4" face="CatCard_4">
+	<card rank="4" face="CatCard_4" amount="3">
 	</card>
 
-	<card rank="5" face="CatCard_5">
+	<card rank="5" face="CatCard_5" amount="3">
 	</card>
 
-	<card rank="6" face="CatCard_6">
+	<card rank="6" face="CatCard_6" amount="3">
 	</card>
 
-	<card rank="7" face="CatCard_7">
+	<card rank="7" face="CatCard_7" amount="3">
 	</card>
 
-	<card rank="8" face="CatCard_8">
+	<card rank="8" face="CatCard_8" amount="3">
 	</card>
 
-	<card rank="9" face="CatCard_9">
+	<card rank="9" face="CatCard_9" amount="9">
 	</card>
 
 	<!-- Specialty Cards: -->
@@ -48,17 +48,17 @@
 	<!-- Not sure which graphics will be used yet -->
 
 	<!--Draw 2-->
-	<card rank="10" face="CatCard_D" special="d">
+	<card rank="10" face="CatCard_D" amount="3">
 
 	</card>
 
 	<!--Peek-->
-	<card rank="11" face="CatCard_P" special="p">
+	<card rank="11" face="CatCard_P" amount="3">
 
 	</card>
 
 	<!--Switch-->
-	<card rank="12" face="CatCard_S" special="s">
+	<card rank="12" face="CatCard_S" special="s" amount="3">
 	</card>
 
 	<!-- 
