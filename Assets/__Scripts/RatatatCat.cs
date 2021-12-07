@@ -201,6 +201,7 @@ public class RatatatCat : MonoBehaviour
         tCC.SetSortingLayerName(layout.discardPile.layerName);
         tCC.SetSortOrder(discardpile.Count * 4);
         tCC.transform.localPosition = layout.discardPile.pos + Vector3.back / 2;
+        tCC.faceUp = true;
 
         return (tCC);
     }
