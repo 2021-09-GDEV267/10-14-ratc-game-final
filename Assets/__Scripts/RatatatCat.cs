@@ -123,7 +123,7 @@ public class RatatatCat : MonoBehaviour
 
     public void DrawFirstTarget()
     {
-        CardCat tCC = MoveToTarget(Draw());
+        CardCat tCC = MoveToDiscard(Draw());
         tCC.reportFinishTo = this.gameObject;
     }
 
@@ -200,7 +200,7 @@ public class RatatatCat : MonoBehaviour
         discardpile.Add(tCC);
         tCC.SetSortingLayerName(layout.discardPile.layerName);
         tCC.SetSortOrder(discardpile.Count * 4);
-        tCC.transform.localPosition = layout.discardPile.pos + Vector3.back / 2;
+        tCC.MoveTo((layout.discardPile.pos + Vector3.back / 2), tCC.transform.rotation);
         tCC.faceUp = true;
 
         return (tCC);
