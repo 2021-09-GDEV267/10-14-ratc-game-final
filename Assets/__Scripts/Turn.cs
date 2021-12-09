@@ -19,7 +19,7 @@ public class Turn : MonoBehaviour
     Location source;
     CardCat cardOut;
     Location inDestination;
-    Location outDesitnation;
+  
 
     public Turn(int newPlayer, CardCat newIn, Location newSource, Location newInDest, CardCat newOut)
     {
@@ -39,6 +39,7 @@ public class Turn : MonoBehaviour
     {
         cardOut = newOut;
     }
+
     public string toString()
     {
         string message = string.Format("Player %d drew a ", player);
@@ -86,8 +87,8 @@ public class Turn : MonoBehaviour
     }
 
 
-    public void debugSwitch()
+    public void setDebug(bool newDebug)
     {
-        debug = !debug;
+        debug = newDebug;
     }
 }
