@@ -30,7 +30,8 @@ public class RatatatCat : MonoBehaviour
     public GameObject transition;
     public GameObject startGame;
     public GameObject cardShow;
-    public bool pregame = true;
+    //public bool pregame = true;
+    public int discardCount = 0;
 
     [Header("Set Dynamically")]
     public Deck deck;
@@ -115,22 +116,19 @@ public class RatatatCat : MonoBehaviour
                 players[(j + 1) % 4].AddCard(tCC);
             }
         }
-        if (pregame == true)
-        {
-            Invoke("DrawFirstTarget", drawTimeStagger * (numStartingCards * 4 + 4));
-        }
+        Invoke("DrawFirstTarget", drawTimeStagger * (numStartingCards * 4 + 4));
+        
     }
 
     public void DrawFirstTarget()
     {
-        CardCat tCC = MoveToTarget(Draw());
+        CardCat tCC = MoveToDiscard(Draw());
         tCC.reportFinishTo = this.gameObject;
     }
 
     public void CCCallback(CardCat cc)
     {
         Utils.tr("Rat-a-tat-cat:CCCallback", cc.name);
-        StartCoroutine(CanvasSet(viewHand, hand));
         CURRENT_PLAYER = players[index];
     }
 
@@ -199,9 +197,19 @@ public class RatatatCat : MonoBehaviour
         tCC.state = CCState.discard;
         discardpile.Add(tCC);
         tCC.SetSortingLayerName(layout.discardPile.layerName);
-        tCC.SetSortOrder(discardpile.Count * 4);
-        tCC.transform.localPosition = layout.discardPile.pos + Vector3.back / 2;
+        if (discardCount == 0)
+        {
+            tCC.SetSortOrder(-100 + (discardpile.Count * 3));
+        }
+        else
+        {
+            tCC.eventualSortOrder = -100 + (discardCount * 3);
+        }
+        tCC.eventualSortLayer = layout.discardPile.layerName;
+        tCC.eventualSortOrder = -100 + (discardCount * 3);
+        tCC.MoveTo((layout.discardPile.pos + Vector3.back / 2), Quaternion.Euler(0, 0, 0));
         tCC.faceUp = true;
+        discardCount++;
 
         return (tCC);
     }
@@ -260,7 +268,17 @@ public class RatatatCat : MonoBehaviour
                     phase = TurnPhaseCat.waiting;
                 }
                 break;
+
+                switch (phase)
+                {
+                    case TurnPhaseCat.idle:
+
+                        //example
+
+                        break;
+                }
         }
+
     }
 
     public bool ValidPlay(CardCat cc)
