@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class TurnLog : MonoBehaviour
+public static class TurnLog
 {
-    private List<Turn> allTurns;
-    private Queue<Turn> recentTurns;
+    private static List<Turn> allTurns;
+    private static Queue<Turn> recentTurns;
     
-    public TurnLog()
+    static TurnLog()
     {
         allTurns = new List<Turn>();
         recentTurns = new Queue<Turn>(3);
     }
 
-    public void addToLog(Turn toAdd)
+    public static void addToLog(Turn toAdd)
     {
         allTurns.Add(toAdd);
         if(recentTurns.Count == 4)
@@ -23,24 +23,24 @@ public class TurnLog : MonoBehaviour
         }
         recentTurns.Enqueue(toAdd);
     }
-    public void roundReport()
+    public static void roundReport()
     {
         Turn[] lastRound = new Turn[3];
         recentTurns.CopyTo(lastRound, 0);
         foreach(Turn t in lastRound){
-            print(t.toString());
+            System.Console.WriteLine(t.toString());
         }
     }
 
-    public void matchReport()
+    public static void matchReport()
     {
         foreach(Turn t in allTurns)
         {
-            print(t.toString());
+            System.Console.WriteLine(t.toString());
         }
     }
 
-    public void matchReportToFile()
+    public static void matchReportToFile()
     {
         List<string> matchReportString = new List<string>();
         foreach(Turn t in allTurns)

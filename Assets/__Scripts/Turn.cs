@@ -4,12 +4,12 @@ using UnityEngine;
 
 public enum Location
 {
-    Deck = 0,
-    Discard = 1,
-    LeftOuter = 2,
-    LeftInner = 3,
-    RightInner = 4,
-    RightOuter = 5
+    LeftOuter = 0,
+    LeftInner = 1,
+    RightInner = 2,
+    RightOuter = 3,
+    Deck = 4,
+    Discard = 5,
 }
 public class Turn : MonoBehaviour
 {
@@ -17,26 +17,17 @@ public class Turn : MonoBehaviour
     int player;
     CardCat cardIn;
     Location source;
+    Location destination;
     CardCat cardOut;
-    Location inDestination;
+
   
 
-    public Turn(int newPlayer, CardCat newIn, Location newSource, Location newInDest, CardCat newOut)
+    public Turn(int newPlayer, CardCat newIn, Location newSource, Location newDest, CardCat newOut)
     {
         player = newPlayer;
         cardIn = newIn;
         source = newSource;
-        inDestination = newInDest;
-        cardOut = newOut;
-    }
-
-    public Turn(int player, CardCat newIn, Location newSource, Location newInDest)
-    {
-        new Turn(player, newIn, newSource, newInDest, null);
-    }
-
-    public void discard(CardCat newOut)
-    {
+        destination = newDest;
         cardOut = newOut;
     }
 
@@ -63,7 +54,7 @@ public class Turn : MonoBehaviour
                 message += "ERROR";
                 break;
         }
-        switch (inDestination)
+        switch (destination)
         {
             case Location.Discard:
                 message += " and discarded it.";

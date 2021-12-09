@@ -39,8 +39,6 @@ public class RatatatCat : MonoBehaviour
     public CardCat targetCard;
     public TurnPhaseCat phase = TurnPhaseCat.idle;
     public int index = 0;
-    private TurnLog turnLog = new TurnLog();
-
     private CatLayout layout;
     private Transform layoutAnchor;
 

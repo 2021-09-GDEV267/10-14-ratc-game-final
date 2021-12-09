@@ -3,7 +3,17 @@ guid: 19541e252e81a9041b2e750c392961f7
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - deckXML: {fileID: 4900000, guid: c76312a0fb08948699e1abf935e4a957, type: 3}
+  - layoutXML: {fileID: 4900000, guid: e3f1ed686f5484543b5bfb6bb3a66b04, type: 3}
+  - viewHand: {instanceID: 0}
+  - hand: {instanceID: 0}
+  - playerNum: {instanceID: 0}
+  - transition: {instanceID: 0}
+  - startGame: {instanceID: 0}
+  - cardShow: {instanceID: 0}
+  - deck: {instanceID: 0}
+  - targetCard: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
