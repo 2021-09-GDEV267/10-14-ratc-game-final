@@ -17,6 +17,9 @@ public class RatatatCat : MonoBehaviour
 {
     static public RatatatCat S;
     static public CatPlayer CURRENT_PLAYER;
+    static public CardCat swap;
+    static public CardCat swap2;
+    static public CatPlayer player2;
 
     [Header("Set in Inspector")]
     public TextAsset deckXML;
@@ -261,6 +264,18 @@ public class RatatatCat : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    public void SwapDiscard(CardCat discard, CardCat hand, int handIndex)
+    {
+        swap = discard;
+        swap2 = hand;
+        RatatatCat.CURRENT_PLAYER.hand[handIndex] = swap;
+        swap.MoveTo(swap2.transform.position, swap2.transform.rotation);
+        swap.state = CCState.toHand;
+        RatatatCat.S.MoveToDiscard(swap2);
+        swap2.state = CCState.discard;
+        swap2.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     public bool ValidPlay(CardCat cc)
