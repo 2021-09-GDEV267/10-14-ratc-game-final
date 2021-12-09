@@ -14,7 +14,7 @@ MonoImporter:
   - cardShow: {instanceID: 0}
   - deck: {instanceID: 0}
   - targetCard: {instanceID: 0}
-  executionOrder: 0
+  executionOrder: 100
   icon: {instanceID: 0}
   userData: 
   assetBundleName: 

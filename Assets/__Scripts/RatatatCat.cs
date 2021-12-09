@@ -119,14 +119,13 @@ public class RatatatCat : MonoBehaviour
 
     public void DrawFirstTarget()
     {
-        CardCat tCC = MoveToTarget(Draw());
+        CardCat tCC = MoveToDiscard(Draw());
         tCC.reportFinishTo = this.gameObject;
     }
 
     public void CCCallback(CardCat cc)
     {
         Utils.tr("Rat-a-tat-cat:CCCallback", cc.name);
-        StartCoroutine(CanvasSet(viewHand, hand));
         CURRENT_PLAYER = players[index];
     }
 
