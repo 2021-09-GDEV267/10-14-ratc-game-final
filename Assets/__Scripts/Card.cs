@@ -103,7 +103,8 @@ public class Card : MonoBehaviour {
 [System.Serializable]
 public class Decorator
 {
-    public string type; // For card pips, type = "pip"
+    public string number; // For card
+    public string text; //special card text
     public Vector3 loc; // The location of the Sprite on the Card
     public bool flip = false; // Whether to flip the Sprite vertically
     public float scale = 1f; // The scale of the Sprite
@@ -112,7 +113,7 @@ public class Decorator
 [System.Serializable]
 public class CardDefinition
 {
-    public string face; // Sprite to use for each face card
+    public string face; // cat sprite to use for each face card
     public int rank; // The rank (1-13) of this card
-    public List<Decorator> pips = new List<Decorator>(); // Pips used
+  //  public List<Decorator> pips = new List<Decorator>(); // Pips used
 }
