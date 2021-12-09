@@ -23,6 +23,7 @@ public class RatatatCat : MonoBehaviour
     public TextAsset layoutXML;
     public Vector3 layoutCenter = Vector3.zero;
     public int numStartingCards = 4;
+    public int discardCount = 0;
     public float drawTimeStagger = 0.1f;
     public GameObject viewHand;
     public GameObject hand;
@@ -199,9 +200,19 @@ public class RatatatCat : MonoBehaviour
         tCC.state = CCState.discard;
         discardpile.Add(tCC);
         tCC.SetSortingLayerName(layout.discardPile.layerName);
-        tCC.SetSortOrder(discardpile.Count * 4);
-        tCC.MoveTo((layout.discardPile.pos + Vector3.back / 2), tCC.transform.rotation);
+        if (discardCount == 0)
+        {
+            tCC.SetSortOrder(-100 + (discardpile.Count * 3));
+        }
+        else
+        {
+            tCC.eventualSortOrder = -100 + (discardCount * 3);
+        }
+        tCC.eventualSortLayer = layout.discardPile.layerName;
+        tCC.eventualSortOrder = -100 + (discardCount * 3);
+        tCC.MoveTo((layout.discardPile.pos + Vector3.back / 2), Quaternion.Euler(0, 0, 0));
         tCC.faceUp = true;
+        discardCount++;
 
         return (tCC);
     }
