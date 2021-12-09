@@ -17,7 +17,7 @@ public static class TurnLog
     public static void addToLog(Turn toAdd)
     {
         allTurns.Add(toAdd);
-        if(recentTurns.Count == 4)
+        if(recentTurns.Count == 3)
         {
             recentTurns.Dequeue();
         }
