@@ -236,6 +236,43 @@ public class RatatatCat : MonoBehaviour
         return (cc);
     }
 
+    public void CardClicked(CardCat tCC)
+    {
+        if (CURRENT_PLAYER.type != PlayerTypeCat.human) return;
+        if (phase == TurnPhaseCat.waiting) return;
+
+        switch (tCC.state)
+        {
+            case CCState.discard:
+                CardCat cc = CURRENT_PLAYER.AddCard(MoveToTarget(tCC));
+                cc.callbackPlayer = CURRENT_PLAYER;
+                Utils.tr("RatatatCat:CardClicked()", "MoveToTarget", cc.name);
+                phase = TurnPhaseCat.waiting;
+                break;
+
+            case CCState.hand:
+                if (ValidPlay(tCC))
+                {
+                    CURRENT_PLAYER.RemoveCard(tCC);
+                    MoveToDiscard(tCC);
+                    tCC.callbackPlayer = CURRENT_PLAYER;
+                    Utils.tr("RatatatCat:CardClicked()", "Play", tCC.name, targetCard.name + " is target");
+                    phase = TurnPhaseCat.waiting;
+                }
+                break;
+        }
+    }
+
+    public bool ValidPlay(CardCat cc)
+    {
+        if (cc.rank == targetCard.rank) return (true);
+        if (cc.suit == targetCard.suit)
+        {
+            return (true);
+        }
+        return (false);
+    }
+
     List<CardCat> UpgradeCardsList(List<Card> lCD)
     {
         List<CardCat> lCC = new List<CardCat>();
