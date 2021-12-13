@@ -113,6 +113,8 @@ public class RatatatCat : MonoBehaviour
 
                 tCC.timeStart = Time.time + drawTimeStagger * (i * 4 + j);
 
+                tCC.handIndex = j;
+
                 players[(j + 1) % 4].AddCard(tCC);
             }
         }
@@ -195,6 +197,7 @@ public class RatatatCat : MonoBehaviour
     public CardCat MoveToDiscard(CardCat tCC)
     {
         tCC.state = CCState.discard;
+        tCC.handIndex = -1;
         discardpile.Add(tCC);
         tCC.SetSortingLayerName(layout.discardPile.layerName);
         if (discardCount == 0)
