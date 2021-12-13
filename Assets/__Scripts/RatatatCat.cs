@@ -17,6 +17,7 @@ public class RatatatCat : MonoBehaviour
 {
     static public RatatatCat S;
     static public CatPlayer CURRENT_PLAYER;
+    static public CatPlayer player2;
 
     [Header("Set in Inspector")]
     public TextAsset deckXML;
@@ -41,6 +42,8 @@ public class RatatatCat : MonoBehaviour
     public CardCat targetCard;
     public TurnPhaseCat phase = TurnPhaseCat.idle;
     public int index = 0;
+    public CardCat swap;
+    public CardCat swap2;
 
     private CatLayout layout;
     private Transform layoutAnchor;
@@ -246,7 +249,7 @@ public class RatatatCat : MonoBehaviour
 
     public void CardClicked(CardCat tCC)
     {
-        List<CardCat> discardpile = new List<CardCat>();
+        //List<CardCat> discardpile = new List<CardCat>();
         if (CURRENT_PLAYER.type != PlayerTypeCat.human) return;
         if (phase == TurnPhaseCat.waiting) return;
 
@@ -255,18 +258,29 @@ public class RatatatCat : MonoBehaviour
             CardCat cc = CURRENT_PLAYER.AddCard(MoveToTarget(tCC));
             cc.callbackPlayer = CURRENT_PLAYER;
             phase = TurnPhaseCat.waiting;
+            index = -1;
         }
         else if(tCC.state == CCState.hand)
         {
-            CURRENT_PLAYER.RemoveCard(tCC);
-            MoveToDiscard(tCC);
+            SwapDiscard(CardCat, CardCat, int);
+            SwapDiscard(tCC);
             tCC.callbackPlayer = CURRENT_PLAYER;
         }
 
-        if (CURRENT_PLAYER.type != PlayerTypeCat.human) return;
-        if (phase == TurnPhaseCat.waiting) return;
-
     }
+
+    public void SwapDiscard(CardCat discard, CardCat hand, int handIndex)
+    {
+        swap = discard;
+        swap2 = hand;
+        RatatatCat.CURRENT_PLAYER.hand[handIndex] = swap;
+        swap.MoveTo(swap2.transform.position, swap2.transform.rotation);
+        swap.state = CCState.toHand;
+        RatatatCat.S.MoveToDiscard(swap2);
+        swap2.state = CCState.discard;
+        swap2.transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
+
     public bool ValidPlay(CardCat cc)
     {
         if (cc.rank == targetCard.rank) return (true);
