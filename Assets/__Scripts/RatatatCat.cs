@@ -44,6 +44,7 @@ public class RatatatCat : MonoBehaviour
     public int index = 0;
     public CardCat swap;
     public CardCat swap2;
+    public CardCat discardSelection;
 
     private CatLayout layout;
     private Transform layoutAnchor;
@@ -115,6 +116,8 @@ public class RatatatCat : MonoBehaviour
                 tCC = Draw();
 
                 tCC.timeStart = Time.time + drawTimeStagger * (i * 4 + j);
+
+                tCC.handIndex = j;
 
                 players[(j + 1) % 4].AddCard(tCC);
             }
@@ -198,6 +201,7 @@ public class RatatatCat : MonoBehaviour
     public CardCat MoveToDiscard(CardCat tCC)
     {
         tCC.state = CCState.discard;
+        tCC.handIndex = -1;
         discardpile.Add(tCC);
         tCC.SetSortingLayerName(layout.discardPile.layerName);
         if (discardCount == 0)
@@ -249,22 +253,31 @@ public class RatatatCat : MonoBehaviour
 
     public void CardClicked(CardCat tCC)
     {
-        //List<CardCat> discardpile = new List<CardCat>();
         if (CURRENT_PLAYER.type != PlayerTypeCat.human) return;
-        if (phase == TurnPhaseCat.waiting) return;
+        if (phase == TurnPhaseCat.waiting) return;       
 
         if (tCC.state == CCState.discard)
         {
-            CardCat cc = CURRENT_PLAYER.AddCard(MoveToTarget(tCC));
-            cc.callbackPlayer = CURRENT_PLAYER;
-            phase = TurnPhaseCat.waiting;
-            index = -1;
+            Debug.Log("You clicked on the discard pile!");
+
+            if (discardSelection != null)
+            {
+                discardSelection = null;
+            }
+            else{
+                discardSelection = tCC;
+            }
         }
         else if(tCC.state == CCState.hand)
         {
-            SwapDiscard(CardCat, CardCat, int);
-            SwapDiscard(tCC);
-            tCC.callbackPlayer = CURRENT_PLAYER;
+            Debug.Log("You clicked on the player 1's hand!");
+            if (discardSelection != null)
+            {
+                SwapDiscard(discardSelection, tCC, tCC.handIndex);
+                discardSelection = null;
+                tCC.callbackPlayer = CURRENT_PLAYER;
+                phase = TurnPhaseCat.waiting;
+            }
         }
 
     }
@@ -276,9 +289,12 @@ public class RatatatCat : MonoBehaviour
         RatatatCat.CURRENT_PLAYER.hand[handIndex] = swap;
         swap.MoveTo(swap2.transform.position, swap2.transform.rotation);
         swap.state = CCState.toHand;
+        swap.faceUp = false;
         RatatatCat.S.MoveToDiscard(swap2);
-        swap2.state = CCState.discard;
+        RatatatCat.S.discardpile.Remove(discard);
         swap2.transform.rotation = Quaternion.Euler(0, 0, 0);
+        if (CURRENT_PLAYER.type != PlayerTypeCat.human) return;
+        if (phase == TurnPhaseCat.waiting) return;
     }
 
     public bool ValidPlay(CardCat cc)
@@ -290,6 +306,7 @@ public class RatatatCat : MonoBehaviour
         }
         return (false);
     }
+
     List<CardCat> UpgradeCardsList(List<Card> lCD)
     {
         List<CardCat> lCC = new List<CardCat>();

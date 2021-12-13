@@ -29,6 +29,7 @@ public class CardCat : Card
     public float timeStart, timeDuration;
     public string eventualSortLayer;
     public int eventualSortOrder;
+    public int handIndex = -1;
 
     public GameObject reportFinishTo = null;
 
