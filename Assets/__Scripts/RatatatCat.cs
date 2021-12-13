@@ -246,52 +246,27 @@ public class RatatatCat : MonoBehaviour
 
     public void CardClicked(CardCat tCC)
     {
-<<<<<<< HEAD
         List<CardCat> discardpile = new List<CardCat>();
         if (CURRENT_PLAYER.type != PlayerTypeCat.human) return;
         if (phase == TurnPhaseCat.waiting) return;
-        if (tCC.state = discardpile)
+
+        if (tCC.state == CCState.discard)
         {
-            
-=======
+            CardCat cc = CURRENT_PLAYER.AddCard(MoveToTarget(tCC));
+            cc.callbackPlayer = CURRENT_PLAYER;
+            phase = TurnPhaseCat.waiting;
+        }
+        else if(tCC.state == CCState.hand)
+        {
+            CURRENT_PLAYER.RemoveCard(tCC);
+            MoveToDiscard(tCC);
+            tCC.callbackPlayer = CURRENT_PLAYER;
+        }
+
         if (CURRENT_PLAYER.type != PlayerTypeCat.human) return;
         if (phase == TurnPhaseCat.waiting) return;
 
-        switch (tCC.state)
-        {
-            case CCState.discard:
-                CardCat cc = CURRENT_PLAYER.AddCard(MoveToTarget(tCC));
-                cc.callbackPlayer = CURRENT_PLAYER;
-                Utils.tr("RatatatCat:CardClicked()", "MoveToTarget", cc.name);
-                phase = TurnPhaseCat.waiting;
-                break;
-
-            case CCState.hand:
-                if (ValidPlay(tCC))
-                {
-                    CURRENT_PLAYER.RemoveCard(tCC);
-                    MoveToDiscard(tCC);
-                    tCC.callbackPlayer = CURRENT_PLAYER;
-                    Utils.tr("RatatatCat:CardClicked()", "Play", tCC.name, targetCard.name + " is target");
-                    phase = TurnPhaseCat.waiting;
-                }
-                break;
-
-                switch (phase)
-                {
-                    case TurnPhaseCat.idle:
-
-                        //example
-
-                        break;
-                }
->>>>>>> 3f03b3ab18ea34aa885a009cbd2bc39cdcc7855b
-        }
-
     }
-
-<<<<<<< HEAD
-=======
     public bool ValidPlay(CardCat cc)
     {
         if (cc.rank == targetCard.rank) return (true);
@@ -301,8 +276,6 @@ public class RatatatCat : MonoBehaviour
         }
         return (false);
     }
-
->>>>>>> 3f03b3ab18ea34aa885a009cbd2bc39cdcc7855b
     List<CardCat> UpgradeCardsList(List<Card> lCD)
     {
         List<CardCat> lCC = new List<CardCat>();
