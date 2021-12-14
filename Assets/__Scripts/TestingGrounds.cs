@@ -11,7 +11,7 @@ public class TestingGrounds : MonoBehaviour
     public CardCat swap2;
     void Start()
     {
-        RatatatCat.S.MoveToDiscard(RatatatCat.S.Draw());
+        //RatatatCat.S.MoveToDiscard(RatatatCat.S.Draw());
     }
 
     public void SwapDiscard(CardCat discard, CardCat hand, int handIndex)
@@ -26,6 +26,7 @@ public class TestingGrounds : MonoBehaviour
         RatatatCat.S.discardpile.Remove(discard);
         swap2.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
+
 
     public void SwapDraw(CardCat draw, CardCat hand, int handIndex)
     {

@@ -5,16 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/__Prospector_Scene_0.unity
-    guid: e7876eae655084f8d9b344b33478f0fa
-  - enabled: 0
-    path: Assets/__Bartok_Scene_0.unity
-    guid: 51522ca524a145c419dff906deae731e
   - enabled: 1
-    path: Assets/__Startup_Scene_0.unity
+    path: Assets/Everything amaury implemented/__Startup_Scene_0.unity
     guid: d9614ef2e652a6e4aa23809034666f99
   - enabled: 1
-    path: Assets/__Startup_Scene_Settings_0.unity
-    guid: 612df8fbccc61f44cbb87406f9d3f50c
+    path: Assets/__ratc_Pregame_Scene_0.unity
+    guid: a303674d69d7f734d8dc933dfd4e6392
   m_configObjects: {}

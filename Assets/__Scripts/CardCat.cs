@@ -29,6 +29,7 @@ public class CardCat : Card
     public float timeStart, timeDuration;
     public string eventualSortLayer;
     public int eventualSortOrder;
+    public int handIndex = -1;
 
     public GameObject reportFinishTo = null;
 
@@ -86,7 +87,7 @@ public class CardCat : Card
                     if (state == CCState.toHand) state = CCState.hand;
                     if (state == CCState.toTarget) state = CCState.target;
                     if (state == CCState.toDrawpile) state = CCState.drawpile;
-                    if (state == CCState.to) state = CCState.idle;
+                    if (state == CCState.to) state = CCState.discard; //this may break other things
 
                     transform.localPosition = bezierPts[bezierPts.Count - 1];
                     transform.rotation = bezierRots[bezierPts.Count - 1];
@@ -132,9 +133,9 @@ public class CardCat : Card
         }
     }
 
-    //override public void OnMouseUpAsButton()
-    //{
-    //    RatatatCat.S.CardClicked(this);
-    //    base.OnMouseUpAsButton();
-    //}
+    override public void OnMouseUpAsButton()
+    {
+        RatatatCat.S.CardClicked(this);
+        base.OnMouseUpAsButton();
+    }
 }
