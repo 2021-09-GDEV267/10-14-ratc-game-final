@@ -131,7 +131,7 @@ LightingSettings:
   m_PrefabAsset: {fileID: 0}
   m_Name: Settings.lighting
   serializedVersion: 3
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_EnableBakedLightmaps: 1
   m_EnableRealtimeLightmaps: 1
   m_RealtimeEnvironmentLighting: 1
@@ -441,6 +441,7 @@ MonoBehaviour:
   layoutXML: {fileID: 4900000, guid: e3f1ed686f5484543b5bfb6bb3a66b04, type: 3}
   layoutCenter: {x: 0, y: 0, z: 0}
   numStartingCards: 4
+  discardCount: 0
   drawTimeStagger: 0.1
   viewHand: {fileID: 0}
   hand: {fileID: 0}
@@ -484,8 +485,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swap: {fileID: 0}
   swap2: {fileID: 0}
-  swapNum: 0
-  swapNum2: 0
 --- !u!1 &1304229531
 GameObject:
   m_ObjectHideFlags: 0

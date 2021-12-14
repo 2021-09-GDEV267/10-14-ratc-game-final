@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class catDeck : MonoBehaviour {
+public class CatDeck : MonoBehaviour {
 
     [Header("Set in Inspector")]
     public bool startFaceUp = false;
@@ -12,24 +12,24 @@ public class catDeck : MonoBehaviour {
     public Sprite PeekText;
     public Sprite SwapText;
     public Sprite[] faceSprites;
-    public Sprite[] rankSprites;
-    public Sprite cardBack;
-    public Sprite cardFront;
+    //public Sprite[] rankSprites;      // treating everything as a face card
+    public Sprite cardBack; 
+    public Sprite cardFront;            // technically not used because card front baked in sprite          
 
     // Prefabs
     public GameObject prefabSprite;
-    public GameObject prefabCardBg;
-    public GameObject prefabCardFront;
-    public GameObject[] prefabCardBgColors;
+    //public GameObject prefabCardBg;   // not needed - the card contains all parts of itself
+    public GameObject prefabCard;
+    // public GameObject[] prefabCardBgColors;  // not needed 
 
     [Header("Set Dynamically")]
     public PT_XMLReader xmlr;
     public List<string> cardNames;
     public List<Card> cards;
-    public List<Decorator> decorators;
+    // public List<Decorator> decorators;   // no decorators - baked in to card
     public List<CardDefinition> cardDefs;
     public Transform deckAnchor;
-    public Dictionary<string, Sprite> dictSuits;
+    // public Dictionary<string, Sprite> dictSuits;     // no suits in RATC
 
     // InitDeck is called by Prospector when it is ready
     public void InitDeck(string deckXMLText)
@@ -65,24 +65,15 @@ public class catDeck : MonoBehaviour {
         xmlr = new PT_XMLReader(); // Create a new PT_XMLReader
         xmlr.Parse(deckXMLText); // Use that PT_XMLReader to parse DeckXML
 
-        // This prints a test line to show you how xmlr can be used.
-        // For more information read about XML in the Useful Concepts Appendix
-        string s = "xml[0] decorator[o]";
-        s += "type=" + xmlr.xml["xml"][0]["decorator"][0].att("type");
-        s += "x=" + xmlr.xml["xml"][0]["decorator"][0].att("x");
-        s += "y=" + xmlr.xml["xml"][0]["decorator"][0].att("y");
-        s += "scale=" + xmlr.xml["xml"][0]["decorator"][0].att("scale");
-        print(s);
-
+        #region Decorators
         // Read decorators for all Cards
-
-        decorators = new List<Decorator>(); // Init the list of Decorators
-
+        //decorators = new List<Decorator>(); // Init the list of Decorators
         // Grab an PT_XMLHashList of all <decorator>s in the XML file
-        PT_XMLHashList xDecos = xmlr.xml["xml"][0]["decorator"];
+        // PT_XMLHashList xDecos = xmlr.xml["xml"][0]["decorator"];
 
-        Decorator deco;
+        // Decorator deco;
 
+        /* START remove decorators
         //Card info displayed in corners
         for (int i=0; i<xDecos.Count; i++)
         {
@@ -101,9 +92,12 @@ public class catDeck : MonoBehaviour {
             // Add the temporary deco to the List decorators
             decorators.Add(deco);
         }
+        END remove decorators */
+        #endregion
 
         // Read card info
         cardDefs = new List<CardDefinition>(); // Init the List of Cards
+        
         // Grab an PT_XMLHashList of all the <card>s in the XML file
         PT_XMLHashList xCardDefs = xmlr.xml["xml"][0]["card"];
         for (int i=0; i<xCardDefs.Count; i++)
@@ -111,12 +105,16 @@ public class catDeck : MonoBehaviour {
             // For each of the <card>s
             // Create a new CardDefinition
             CardDefinition cDef = new CardDefinition();
+            
             // Parse the attribute values and add them to cDef
             cDef.rank = int.Parse(xCardDefs[i].att("rank"));
+            cDef.amount = int.Parse(xCardDefs[i].att("amount"));
+
+            #region Pips
             // Grab an PT_XMLHashList of all the <pip>s on this <card>
-            PT_XMLHashList xPips = xCardDefs[i]["pip"];
-            
-            
+            //PT_XMLHashList xPips = xCardDefs[i]["pip"];
+
+
             //no pips in cat cards
             /*
             if(xPips != null)
@@ -138,7 +136,7 @@ public class catDeck : MonoBehaviour {
                    // cDef.pips.Add(deco);
                 }
             }*/
-
+            #endregion
 
 
             // all cards have a face attribute
@@ -146,19 +144,17 @@ public class catDeck : MonoBehaviour {
             {
                 cDef.face = xCardDefs[i].att("face");
             }
-            cardDefs.Add(cDef);
-
             // power cards have special
             if (xCardDefs[i].HasAtt("special"))
             {
-                cDef.face = xCardDefs[i].att("special");
+                cDef.special = xCardDefs[i].att("special");
             }
             cardDefs.Add(cDef);
         }
     }
 
     // Get the proper CardDefinition based on Rank (1 to 14 is Ace to King)
-    public CardDefinition GetCardDefinitionByRank(int rnk)
+   public CardDefinition GetCardDefinitionByRank(int rnk)
     {
         // Search through all of the CardDefinitions
         foreach (CardDefinition cd in cardDefs)
@@ -172,7 +168,7 @@ public class catDeck : MonoBehaviour {
         }
         return (null);
     }
-
+   
 
     // Make the Card GameObjects
     public void MakeCards()
@@ -180,25 +176,18 @@ public class catDeck : MonoBehaviour {
         // cardNames will be the names of cards to build
         // Each suit goes from 1 to 14 (e.g., C1 to C14 for Clubs)
         cardNames = new List<string>();
-        string[] _prefix = new string[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "D", "P", "S" };
-        string[] _suffix = new string[] { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j" };
 
-        //go through each prefix to add a suffix to it
-        foreach (string p in _prefix)
+        // this is a hack that is dependent on knowledge of RATC deck construction
+
+        for (int cardPrefix= 0; cardPrefix<=12; cardPrefix++)
         {
-            // if p isnt 9
-            if (p != "9")
+            int cardsToMake = 4;
+            if (cardPrefix == 9) cardsToMake = 9;
+            if (cardPrefix >= 10) cardsToMake = 3;
+            for (int cardSuffix = 1; cardSuffix <= cardsToMake; cardSuffix++)
             {
-                //then 3 cards are made of each type unless its a 9
-                for (int i = 0; i < 3; i++)
-                {
-                    cardNames.Add(p+_suffix[i]); //example  0a, 0b, 0c ...
-                }
-            }else //a 9 card is in place of p
-                foreach (string s in _suffix)
-                {
-                    cardNames.Add(p + s); //goes through all the _suffix es
-                }
+                cardNames.Add("" + cardPrefix + "_" + cardSuffix);
+            }
         }
 
         // Make a list to hold all the cards
@@ -215,7 +204,7 @@ public class catDeck : MonoBehaviour {
     private Card MakeCard(int cardNum)
     {
         // Create a new Card GameObject with bg sprite
-        GameObject cardObject = Instantiate(prefabCardBg) as GameObject;
+        GameObject cardObject = Instantiate(prefabCard) as GameObject;
         // Set the transform.parent of the new card to the anchor.
         cardObject.transform.parent = deckAnchor;
         Card card = cardObject.GetComponent<Card>(); // Get the Card Component
@@ -225,8 +214,11 @@ public class catDeck : MonoBehaviour {
 
         // Assign basic values to the Card
         card.name = cardNames[cardNum];
-       // card.suit = card.name[0].ToString();
-        card.rank = int.Parse(card.name.Substring(0)); //card rank is prefix
+        // card.suit = card.name[0].ToString();
+        string[] cardrank = card.name.Split('_');
+        card.rank = int.Parse(cardrank[0]); //card rank is prefix
+
+
 //        if(card.suit == "D" || card.suit == "H")
  //       {
   //          card.colS = "Red";
@@ -235,7 +227,7 @@ public class catDeck : MonoBehaviour {
         // Pull the CardDefinition for this card
         card.def = GetCardDefinitionByRank(card.rank);
 
-        AddDecorators(card);
+        //AddDecorators(card);
     //    AddPips(card);
         AddFace(card);
         AddBack(card);
@@ -248,8 +240,10 @@ public class catDeck : MonoBehaviour {
     private GameObject _tempObject = null;
     private SpriteRenderer _tempSpriteRenderer = null;
 
-    private void AddDecorators(Card card)
+    /* private void AddDecorators(Card card)
     {
+        
+        
         // Add Decorators
         foreach(Decorator deco in decorators)
         { 
@@ -263,7 +257,7 @@ public class catDeck : MonoBehaviour {
                 // Set the Sprite to the proper suit
                 _tempSpriteRenderer.sprite = rankSprites[card.rank];
            // }
-           /**
+           
             else
             {
                 _tempObject = Instantiate(prefabSprite) as GameObject;
@@ -279,11 +273,11 @@ public class catDeck : MonoBehaviour {
             
             Sprite tempSprite = rankSprites[card.rank];
             _tempObject = Instantiate(tempSprite) as GameObject;
-            */
-                
+            
 
-            //Make the deco Sprites render above the Card
-    _tempSpriteRenderer.sortingOrder = 1;
+
+        //Make the deco Sprites render above the Card
+        _tempSpriteRenderer.sortingOrder = 1;
             // Make the decorator Sprite a child of the Card
             _tempObject.transform.SetParent(card.transform);
             // Set the localPosition based on the location from DeckXML
@@ -305,6 +299,7 @@ public class catDeck : MonoBehaviour {
             card.decoGOs.Add(_tempObject);
         }
     }
+*/
     /*
     private void AddPips(Card card)
     {
@@ -350,7 +345,7 @@ public class catDeck : MonoBehaviour {
         _tempObject = Instantiate(prefabSprite) as GameObject;
         _tempSpriteRenderer = _tempObject.GetComponent<SpriteRenderer>();
         // Generate the right name and pass it to GetFace()
-        _tempSprite = GetFace(card.def.face + card.suit);
+        _tempSprite = GetFace(card.def.face);
         _tempSpriteRenderer.sprite = _tempSprite; // Assign this Sprite to _tSR
         _tempSpriteRenderer.sortingOrder = 1; // Set the sortingOrder
         _tempObject.transform.SetParent(card.transform);
@@ -394,7 +389,7 @@ public class catDeck : MonoBehaviour {
     static public void Shuffle(ref List<Card> oCards)
     {
         // Create a temporary List to hold the new shuffle order
-        List<Card> tCards = new List<Card>();
+        List<Card> tCards;
 
         int ndx; // This will hold the index of the card to be moved
         tCards = new List<Card>(); // Initialize the temporary List

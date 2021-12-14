@@ -114,6 +114,8 @@ public class Decorator
 public class CardDefinition
 {
     public string face; // cat sprite to use for each face card
-    public int rank; // The rank (1-13) of this card
-  //  public List<Decorator> pips = new List<Decorator>(); // Pips used
+    public int amount; // the amount of this card in the initial deck (3 or 9 for RATC)
+    public int rank; // The rank (0-12) of this card
+    public string special;
+    //  public List<Decorator> pips = new List<Decorator>(); // Pips used
 }
