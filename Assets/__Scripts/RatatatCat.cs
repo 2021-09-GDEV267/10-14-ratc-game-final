@@ -309,8 +309,7 @@ public class RatatatCat : MonoBehaviour
             Debug.Log("You clicked on the draw pile!");
             drawSelection = tCC;
             tCC.faceUp = true;
-            tCC.MoveTo(new Vector3(0, 3.6f, 0));
-            tCC.state = CCState.to;
+            tCC.SetSortOrder(100);
         }
         else if(tCC.state == CCState.hand)
         {
