@@ -36,7 +36,7 @@ public class RatatatCat : MonoBehaviour
     public int discardCount = 0;
 
     [Header("Set Dynamically")]
-    public Deck deck;
+    public CatDeck deck;
     public List<CardCat> drawpile;
     public List<CardCat> discardpile;
     public List<CatPlayer> players;
@@ -60,7 +60,7 @@ public class RatatatCat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        deck = GetComponent<Deck>();
+        deck = GetComponent<CatDeck>();
         deck.InitDeck(deckXML.text);
         Deck.Shuffle(ref deck.cards);
         deck.cards = deck.cards as List<Card>;
