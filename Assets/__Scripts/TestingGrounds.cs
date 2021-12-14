@@ -21,8 +21,9 @@ public class TestingGrounds : MonoBehaviour
         RatatatCat.CURRENT_PLAYER.hand[handIndex] = swap;
         swap.MoveTo(swap2.transform.position, swap2.transform.rotation);
         swap.state = CCState.toHand;
+        swap.faceUp = false;
         RatatatCat.S.MoveToDiscard(swap2);
-        swap2.state = CCState.discard;
+        RatatatCat.S.discardpile.Remove(discard);
         swap2.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
@@ -35,7 +36,6 @@ public class TestingGrounds : MonoBehaviour
         swap.MoveTo(swap2.transform.position, swap2.transform.rotation);
         swap.state = CCState.toHand;
         RatatatCat.S.MoveToDiscard(swap2);
-        swap2.state = CCState.discard;
         swap2.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
@@ -48,6 +48,11 @@ public class TestingGrounds : MonoBehaviour
         swap.MoveTo(swap2.transform.position, swap2.transform.rotation);
         swap2.MoveTo(swap.transform.position, swap.transform.rotation);
         player2.hand[opponentIndex] = swap;
+    }
+
+    public void DrawToDiscard(CardCat drawCard)
+    {
+        RatatatCat.S.MoveToDiscard(drawCard);
     }
 
     void Update()
@@ -68,6 +73,10 @@ public class TestingGrounds : MonoBehaviour
             RatatatCat.CURRENT_PLAYER = RatatatCat.S.players[0];
 
             SwapPlayer(RatatatCat.CURRENT_PLAYER.hand[1], RatatatCat.S.players[1].hand[0], RatatatCat.S.players[1], 1,0);
+        }
+        if (Input.GetKeyUp(KeyCode.P))
+        {
+            DrawToDiscard(RatatatCat.S.Draw());
         }
     }
 }

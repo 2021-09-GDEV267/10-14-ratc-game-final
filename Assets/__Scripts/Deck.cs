@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Deck : MonoBehaviour {
-
+    
     [Header("Set in Inspector")]
     public bool startFaceUp = false;
     // Suits
@@ -79,7 +79,7 @@ public class Deck : MonoBehaviour {
             // For each <decorator> in the XML
             deco = new Decorator(); // Make a new Decorator
             // Copy the attributes of the <decorator> to the Decorator
-            deco.type = xDecos[i].att("type");
+            deco.number = xDecos[i].att("number");
             // bool deco.flip is true if the text of the flip attribute is "1"
             deco.flip = (xDecos[i].att("flip") == "1");
             // floats need to be parsed from the attribute strings
@@ -112,7 +112,7 @@ public class Deck : MonoBehaviour {
                     // Iterate through all the <pip>s
                     deco = new Decorator();
                     // <pip>s on the <card> are handled via the Decorator class
-                    deco.type = "pip";
+            //        deco.type = "pip";
                     deco.flip = (xPips[j].att("flip") == "1");
                     deco.loc.x = float.Parse(xPips[j].att("x"));
                     deco.loc.y = float.Parse(xPips[j].att("y"));
@@ -121,7 +121,7 @@ public class Deck : MonoBehaviour {
                     {
                         deco.scale = float.Parse(xPips[j].att("scale"));
                     }
-                    cDef.pips.Add(deco);
+           //         cDef.pips.Add(deco);
                 }
             }
             // Face cards (Jack, Queen, & King) have a face attribute
@@ -215,7 +215,7 @@ public class Deck : MonoBehaviour {
         // Add Decorators
         foreach(Decorator deco in decorators)
         {
-            if(deco.type == "suit")
+         /*   if(deco.type == "suit")
             {
                 // Instantiate a Sprite GameObject
                 _tGO = Instantiate(prefabSprite) as GameObject;
@@ -235,6 +235,7 @@ public class Deck : MonoBehaviour {
                 // Set the color of the rank to match the suit
                 _tSR.color = card.color;
             }
+         */
             //Make the deco Sprites render above the Card
             _tSR.sortingOrder = 1;
             // Make the decorator Sprite a child of the Card
@@ -253,7 +254,7 @@ public class Deck : MonoBehaviour {
                 _tGO.transform.localScale = Vector3.one * deco.scale;
             }
             // Name this GameObject so it's easy to see
-            _tGO.name = deco.type;
+        //    _tGO.name = deco.type;
             //Add this deco GameObject to the List card.decoGOs
             card.decoGOs.Add(_tGO);
         }
@@ -262,7 +263,7 @@ public class Deck : MonoBehaviour {
     private void AddPips(Card card)
     {
         // For each of the pips in the definition
-        foreach(Decorator pip in card.def.pips)
+     /*   foreach(Decorator pip in card.def.pips)
         {
             // ...Instantiate a Sprite GameObject
             _tGO = Instantiate(prefabSprite) as GameObject;
@@ -291,6 +292,7 @@ public class Deck : MonoBehaviour {
             // Add this to the Card's list of pips
             card.pipGOs.Add(_tGO);
         }
+     */
     }
 
     private void AddFace(Card card)
@@ -366,4 +368,5 @@ public class Deck : MonoBehaviour {
         // Because oCards is a reference (ref) parameter, the original argument
         // that was passed in is changed as well.
     }
+    
 }

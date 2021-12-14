@@ -1,0 +1,34 @@
+<xml>
+
+	<!-- A list of all cards that defines where the cat images are placed. -->
+	<!-- Wasnt sure whether to use pip info or just images for cat cards. I left both-->
+	<!-- The pip info gives a point center card and alters image using scale of prospector card pips. -->
+	<!-- special is for special text sprite -->
+
+	<!-- Number Cards: -->
+	<card rank="0" face="card_0" amount="3" />
+	<card rank="1" face="card_1" amount="3" />
+	<card rank="2" face="card_2" amount="3" />
+	<card rank="3" face="card_3" amount="3" />
+	<card rank="4" face="card_4" amount="3" />
+	<card rank="5" face="card_5" amount="3" />
+	<card rank="6" face="card_6" amount="3" />
+	<card rank="7" face="card_7" amount="3" />
+	<card rank="8" face="card_8" amount="3" />
+	<card rank="9" face="card_9" amount="9" />
+	
+	<!-- Specialty Cards: -->
+	<!-- these also with pip and the name of the Sprite to be shown. -->
+	<!-- D : draw2, P: peek, S: Switch, -->
+	<!-- Not sure which graphics will be used yet -->
+
+	<!--Draw 2-->
+	<card rank="10" face="card_d" special="draw" amount="3" />
+
+	<!--Peek-->
+	<card rank="11" face="card_p" special="peek" amount="3" />
+	
+	<!--Swap-->
+	<card rank="12" face="card_s" special="swap" amount="3" />
+	
+</xml>

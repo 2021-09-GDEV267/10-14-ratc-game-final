@@ -24,6 +24,7 @@ public class RatatatCat : MonoBehaviour
     public TextAsset layoutXML;
     public Vector3 layoutCenter = Vector3.zero;
     public int numStartingCards = 4;
+    public int discardCount = 0;
     public float drawTimeStagger = 0.1f;
     public GameObject viewHand;
     public GameObject hand;
@@ -36,7 +37,7 @@ public class RatatatCat : MonoBehaviour
     public int discardCount = 0;
 
     [Header("Set Dynamically")]
-    public Deck deck;
+    public CatDeck deck;
     public List<CardCat> drawpile;
     public List<CardCat> discardpile;
     public List<CatPlayer> players;
@@ -60,7 +61,7 @@ public class RatatatCat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        deck = GetComponent<Deck>();
+        deck = GetComponent<CatDeck>();
         deck.InitDeck(deckXML.text);
         Deck.Shuffle(ref deck.cards);
         deck.cards = deck.cards as List<Card>;
@@ -239,11 +240,13 @@ public class RatatatCat : MonoBehaviour
         }
         tCC.eventualSortLayer = layout.discardPile.layerName;
         tCC.eventualSortOrder = -100 + (discardCount * 3);
+
         if (canClick)
         {
             ydex = -98;
             layout.discardPile.pos.y = ydex;
         }
+
         tCC.MoveTo((layout.discardPile.pos + Vector3.back / 2), Quaternion.Euler(0, 0, 0));
         tCC.faceUp = true;
         discardCount++;
