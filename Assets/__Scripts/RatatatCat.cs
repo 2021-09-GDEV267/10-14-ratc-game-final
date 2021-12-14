@@ -44,6 +44,7 @@ public class RatatatCat : MonoBehaviour
     public int index = 0;
     public CardCat swap;
     public CardCat swap2;
+    public CardCat drawSelection;
     public CardCat discardSelection;
 
     private CatLayout layout;
@@ -260,13 +261,26 @@ public class RatatatCat : MonoBehaviour
         {
             Debug.Log("You clicked on the discard pile!");
 
-            if (discardSelection != null)
+            if (drawSelection != null)
+            {
+                DrawToDiscard(drawSelection);
+                drawSelection = null;
+            }
+            else if (discardSelection != null)
             {
                 discardSelection = null;
             }
             else{
                 discardSelection = tCC;
             }
+        }
+        else if (tCC.state == CCState.drawpile)
+        {
+            Debug.Log("You clicked on the draw pile!");
+            drawSelection = tCC;
+            tCC.faceUp = true;
+            tCC.MoveTo(new Vector3(0, 3.6f, 0));
+            tCC.state = CCState.to;
         }
         else if(tCC.state == CCState.hand)
         {
@@ -278,8 +292,14 @@ public class RatatatCat : MonoBehaviour
                 tCC.callbackPlayer = CURRENT_PLAYER;
                 phase = TurnPhaseCat.waiting;
             }
+            else if (drawSelection != null)
+            {
+                SwapDraw(drawSelection, tCC, tCC.handIndex);
+                drawSelection = null;
+                tCC.callbackPlayer = CURRENT_PLAYER;
+                phase = TurnPhaseCat.waiting;
+            }
         }
-
     }
 
     public void SwapDiscard(CardCat discard, CardCat hand, int handIndex)
@@ -295,6 +315,26 @@ public class RatatatCat : MonoBehaviour
         swap2.transform.rotation = Quaternion.Euler(0, 0, 0);
         if (CURRENT_PLAYER.type != PlayerTypeCat.human) return;
         if (phase == TurnPhaseCat.waiting) return;
+    }
+
+    public void SwapDraw(CardCat draw, CardCat hand, int handIndex)
+    {
+        swap = draw;
+        swap2 = hand;
+        RatatatCat.CURRENT_PLAYER.hand[handIndex] = swap;
+        swap.MoveTo(swap2.transform.position, swap2.transform.rotation);
+        swap.state = CCState.toHand;
+        swap.faceUp = false;
+        RatatatCat.S.MoveToDiscard(swap2);
+        RatatatCat.S.drawpile.Remove(draw);
+        swap2.transform.rotation = Quaternion.Euler(0, 0, 0);
+        if (CURRENT_PLAYER.type != PlayerTypeCat.human) return;
+        if (phase == TurnPhaseCat.waiting) return;
+    }
+
+    public void DrawToDiscard(CardCat drawCard)
+    {
+        MoveToDiscard(drawCard);
     }
 
     public bool ValidPlay(CardCat cc)
