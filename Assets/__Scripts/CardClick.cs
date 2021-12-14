@@ -8,6 +8,8 @@ public class CardClick : MonoBehaviour
     public GameObject otherButton;
     public GameObject newPanel;
     public List<CardCat> playerHand;
+    public List<CardCat> draw;
+    public List<CardCat> discard;
     public List<Vector3> listOfPos;
     public List<Quaternion> listOfRot;
     public GameObject CatCardPrefab;
@@ -60,6 +62,8 @@ public class CardClick : MonoBehaviour
         CardCat Pcard;
         listOfPos = new List<Vector3>();
         listOfRot = new List<Quaternion>();
+        draw = RatatatCat.S.drawpile;
+        discard = RatatatCat.S.discardpile;
 
         for (int i = 0; i<playerHand.Count; i++) 
         {
@@ -68,8 +72,29 @@ public class CardClick : MonoBehaviour
             Pcard.transform.position = new Vector3(-6 + (i * 4), -103, 0);
             listOfRot.Add(Pcard.transform.rotation);
             Pcard.transform.rotation = Quaternion.Euler(0, 0, 0);
-            if (Pcard == playerHand[0] || Pcard == playerHand[3])
+            if (!RatatatCat.S.canClick)
             {
+                if (Pcard == playerHand[0] || Pcard == playerHand[3])
+                {
+                    Pcard.faceUp = true;
+                }
+            }
+        }
+
+        if (RatatatCat.S.canClick)
+        {
+            for (int i = 0; i < draw.Count; i++)
+            {
+                Pcard = draw[i];
+                Pcard.transform.position = new Vector3(1.5f, -98, 0);
+                Debug.Log("Move Draw");
+            }
+
+            for (int i = 0; i < discard.Count; i++)
+            {
+                Pcard = discard[i];
+                Pcard.transform.position = new Vector3(-1.5f, -98, 0);
+                Pcard.transform.rotation = Quaternion.Euler(0, 0, 0);
                 Pcard.faceUp = true;
             }
         }
@@ -106,6 +131,21 @@ public class CardClick : MonoBehaviour
             if (Pcard == playerHand[0] || Pcard == playerHand[3])
             {
                 Pcard.faceUp = false;
+            }
+        }
+
+        if (RatatatCat.S.canClick)
+        {
+            for (int i = 0; i < draw.Count; i++)
+            {
+                Pcard = draw[i];
+                Pcard.transform.position = new Vector3(1.5f, 0, 0);
+            }
+
+            for (int i = 0; i < discard.Count; i++)
+            {
+                Pcard = discard[i];
+                Pcard.transform.position = new Vector3(-1.5f, 0, 0);
             }
         }
         listOfPos.Clear();

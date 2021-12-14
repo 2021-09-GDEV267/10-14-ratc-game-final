@@ -1043,6 +1043,8 @@ MonoBehaviour:
   otherButton: {fileID: 1462314422}
   newPanel: {fileID: 0}
   playerHand: []
+  draw: []
+  discard: []
   listOfPos: []
   listOfRot: []
   CatCardPrefab: {fileID: 100000, guid: 34b07b33ea0efd348a19dcf83a6ffedb, type: 3}
@@ -1502,7 +1504,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 150}
+  m_AnchoredPosition: {x: 0, y: 183}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1462314424
@@ -1520,6 +1522,8 @@ MonoBehaviour:
   otherButton: {fileID: 0}
   newPanel: {fileID: 0}
   playerHand: []
+  draw: []
+  discard: []
   listOfPos: []
   listOfRot: []
   CatCardPrefab: {fileID: 0}
@@ -1883,7 +1887,7 @@ GameObject:
   - component: {fileID: 1616006021}
   - component: {fileID: 1616006020}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: RatatatCat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2016,17 +2020,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a25b62f12c72eb74d908cb03f4318a54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deckXML: {fileID: 0}
-  layoutXML: {fileID: 0}
+  deckXML: {fileID: 4900000, guid: c76312a0fb08948699e1abf935e4a957, type: 3}
+  layoutXML: {fileID: 4900000, guid: e3f1ed686f5484543b5bfb6bb3a66b04, type: 3}
   layoutCenter: {x: 0, y: 0, z: 0}
   numStartingCards: 4
   drawTimeStagger: 0.1
-  viewHand: {fileID: 0}
-  hand: {fileID: 0}
-  playerNum: {fileID: 0}
-  transition: {fileID: 0}
-  startGame: {fileID: 0}
-  cardShow: {fileID: 0}
+  viewHand: {fileID: 793571724}
+  hand: {fileID: 1384867258}
+  playerNum: {fileID: 1927753859}
+  viewPlay: {fileID: 1028152159}
+  transition: {fileID: 953815616}
+  startGame: {fileID: 2025692605}
+  cardShow: {fileID: 1276328212}
   discardCount: 0
   deck: {fileID: 0}
   drawpile: []
@@ -2039,6 +2044,7 @@ MonoBehaviour:
   swap2: {fileID: 0}
   drawSelection: {fileID: 0}
   discardSelection: {fileID: 0}
+  canClick: 0
 --- !u!4 &1616006023
 Transform:
   m_ObjectHideFlags: 0
@@ -2606,7 +2612,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1616006022}
         m_TargetAssemblyTypeName: RatatatCat, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1

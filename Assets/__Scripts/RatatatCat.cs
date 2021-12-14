@@ -28,6 +28,7 @@ public class RatatatCat : MonoBehaviour
     public GameObject viewHand;
     public GameObject hand;
     public Text playerNum;
+    public Text viewPlay;
     public GameObject transition;
     public GameObject startGame;
     public GameObject cardShow;
@@ -46,6 +47,7 @@ public class RatatatCat : MonoBehaviour
     public CardCat swap2;
     public CardCat drawSelection;
     public CardCat discardSelection;
+    public bool canClick = false;
 
     private CatLayout layout;
     private Transform layoutAnchor;
@@ -103,10 +105,10 @@ public class RatatatCat : MonoBehaviour
         {
             pl = new CatPlayer();
             pl.handSlotDef = tSD;
+            pl.type = PlayerTypeCat.human;
             players.Add(pl);
             pl.playerNum = tSD.player;
         }
-        players[0].type = PlayerTypeCat.human;
 
         CardCat tCC;
 
@@ -136,13 +138,14 @@ public class RatatatCat : MonoBehaviour
     public void CCCallback(CardCat cc)
     {
         Utils.tr("Rat-a-tat-cat:CCCallback", cc.name);
+        StartCoroutine(CanvasSet(viewHand, hand));
         CURRENT_PLAYER = players[index];
     }
 
     //switch canvas screens from one to another
     private IEnumerator CanvasSet(GameObject obj, GameObject deactivate)
     {
-        
+
         deactivate.SetActive(false);
         yield return new WaitForSeconds(0.3f);
         obj.SetActive(true);
@@ -155,29 +158,49 @@ public class RatatatCat : MonoBehaviour
         if (CURRENT_PLAYER.playerNum < 4)
         {
             index++;
+            phase = TurnPhaseCat.idle;
             CURRENT_PLAYER = players[index];
             StartCoroutine(CanvasSet(viewHand, hand));
             playerNum.text = "Player " + CURRENT_PLAYER.playerNum;
+            if (!canClick) {
+                viewPlay.text = "View Cards";
+            }
+            else
+            {
+                viewPlay.text = "Take Turn";
+            }
         }
-        else if(CURRENT_PLAYER.playerNum == 4)
+        else if (CURRENT_PLAYER.playerNum == 4)
         {
             StartCoroutine(CanvasSet(viewHand, hand));
             playerNum.text = "Player 1";
-            cardShow.SetActive(false);
-            startGame.SetActive(true);
+            if (!canClick)
+            {
+                cardShow.SetActive(false);
+                startGame.SetActive(true);
+            }
+            else
+            {
+                StartGame();
+            }
         }
     }
 
     public void StartGame()
     {
-        //This is assuming that the pre-game loop will transition to the game loop via scene transition
-        SceneManager.LoadScene("Begin_Game");
+        index = 0;
+        CURRENT_PLAYER = players[0];
+        viewPlay.text = "Take Turn";
+        startGame.SetActive(false);
+        cardShow.SetActive(true);
+        canClick = true;
     }
 
     //switch canvas to the canvas screen that is for viewing your hand
     public void View()
     {
         StartCoroutine(CanvasSet(hand, viewHand));
+        phase = TurnPhaseCat.idle;
     }
 
     public CardCat MoveToTarget(CardCat tCC)
@@ -201,6 +224,7 @@ public class RatatatCat : MonoBehaviour
 
     public CardCat MoveToDiscard(CardCat tCC)
     {
+        float ydex = 0;
         tCC.state = CCState.discard;
         tCC.handIndex = -1;
         discardpile.Add(tCC);
@@ -215,6 +239,11 @@ public class RatatatCat : MonoBehaviour
         }
         tCC.eventualSortLayer = layout.discardPile.layerName;
         tCC.eventualSortOrder = -100 + (discardCount * 3);
+        if (canClick)
+        {
+            ydex = -98;
+            layout.discardPile.pos.y = ydex;
+        }
         tCC.MoveTo((layout.discardPile.pos + Vector3.back / 2), Quaternion.Euler(0, 0, 0));
         tCC.faceUp = true;
         discardCount++;
@@ -255,8 +284,9 @@ public class RatatatCat : MonoBehaviour
     public void CardClicked(CardCat tCC)
     {
         if (CURRENT_PLAYER.type != PlayerTypeCat.human) return;
-        if (phase == TurnPhaseCat.waiting) return;       
-
+        if (phase == TurnPhaseCat.waiting) return;
+        if (!canClick) return;
+        Debug.Log("not skipped");
         if (tCC.state == CCState.discard)
         {
             Debug.Log("You clicked on the discard pile!");
@@ -309,6 +339,7 @@ public class RatatatCat : MonoBehaviour
         RatatatCat.CURRENT_PLAYER.hand[handIndex] = swap;
         swap.MoveTo(swap2.transform.position, swap2.transform.rotation);
         swap.state = CCState.toHand;
+        swap.handIndex = handIndex;
         swap.faceUp = false;
         RatatatCat.S.MoveToDiscard(swap2);
         RatatatCat.S.discardpile.Remove(discard);
@@ -324,6 +355,7 @@ public class RatatatCat : MonoBehaviour
         RatatatCat.CURRENT_PLAYER.hand[handIndex] = swap;
         swap.MoveTo(swap2.transform.position, swap2.transform.rotation);
         swap.state = CCState.toHand;
+        swap.handIndex = handIndex;
         swap.faceUp = false;
         RatatatCat.S.MoveToDiscard(swap2);
         RatatatCat.S.drawpile.Remove(draw);
