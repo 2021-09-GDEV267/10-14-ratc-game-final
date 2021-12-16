@@ -79,12 +79,12 @@ public class GameManager : MonoBehaviour
         allGameCards.CopyTo(cards);
         foreach (var p in players)
         {
-            p.slot1 = GetRandomCard(cards);
-            p.slot2 = GetRandomCard(cards);
-            p.slot3 = GetRandomCard(cards);
-            p.slot4 = GetRandomCard(cards);
+            p.slot1 = GetRandomStartingCard(cards);
+            p.slot2 = GetRandomStartingCard(cards);
+            p.slot3 = GetRandomStartingCard(cards);
+            p.slot4 = GetRandomStartingCard(cards);
         }
-        discardPile.Add(GetRandomCard(cards));
+        discardPile.Add(GetRandomStartingCard(cards));
         foreach (var c in cards)
         {
             if (c != null)
@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
             playersNameTexts[i].text = players[i].playerName;
     }
 
-    Darc_CardRATC GetRandomCard(Darc_CardRATC[] cards)
+    Darc_CardRATC GetRandomStartingCard(Darc_CardRATC[] cards)
     {
         int ranIndex = Random.Range(0, cards.Length - 1);
         int tries = 0;
@@ -104,10 +104,10 @@ public class GameManager : MonoBehaviour
             cards[ranIndex] = null;
             return pickedCard;
         }
-        else if (cards[ranIndex] == null && tries < 55)
+        else if (cards[ranIndex] == null && tries < 101)
         {
             tries++;
-            return GetRandomCard(cards);
+            return GetRandomStartingCard(cards);
         }
         return null;
     }
@@ -222,7 +222,10 @@ public class GameManager : MonoBehaviour
                             switch (currentActionState)
                             {
                                 case ActionState.None:
-                                    playerTurnText.text = $"Player {currentPlayer.playerNumber} turn!";
+                                    if (isFirstRound)
+                                        playerTurnText.text = $"Player {currentPlayer.playerNumber} FIRST turn!";
+                                    if (isFinalRound)
+                                        playerTurnText.text = $"Player {currentPlayer.playerNumber} FINAL turn!";
                                     ShowSingleView();
                                     break;
                                 case ActionState.Swap:
@@ -233,18 +236,16 @@ public class GameManager : MonoBehaviour
                                     ShowSingleView();
                                     break;
                                 case ActionState.DrawTwo:
+                                    playerTurnText.text = $"Player {currentPlayer.playerNumber} {currentActionState}";
                                     break;
 
                                 case ActionState.Discard:
+                                    playerTurnText.text = $"Player {currentPlayer.playerNumber} {currentActionState}";
                                     break;
 
                                 case ActionState.RatATatCat:
                                     isFinalRound = true;
                                     break;
-                            }
-                            if (isFinalRound)
-                            {
-                                playerTurnText.text = $"Player {currentPlayer.playerNumber} FINAL turn!";
                             }
                         }
                         break;
