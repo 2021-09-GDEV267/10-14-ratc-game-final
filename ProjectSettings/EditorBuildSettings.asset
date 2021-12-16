@@ -11,4 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/__ratc_Pregame_Scene_0.unity
     guid: a303674d69d7f734d8dc933dfd4e6392
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 253ff0b5d36d3074d8a704e44e1fdc07,
+      type: 2}

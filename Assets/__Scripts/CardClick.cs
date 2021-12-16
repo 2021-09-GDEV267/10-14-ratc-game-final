@@ -13,7 +13,7 @@ public class CardClick : MonoBehaviour
     public List<Vector3> listOfPos;
     public List<Quaternion> listOfRot;
     public GameObject CatCardPrefab;
-    public GameObject camera;
+    public new GameObject camera;
     public GameObject transition;
     public GameObject sure;
 

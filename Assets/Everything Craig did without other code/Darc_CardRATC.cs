@@ -19,9 +19,10 @@ public class Darc_CardDefinition
     }
 }
 
+[System.Serializable]
 public class Darc_CardRATC : MonoBehaviour
 {
     public Darc_CardDefinition cardDefinition;
-    public int currentOwnerNumber;
-    public int currentSlotNumber;
+    public int currentOwnerNumber = 0;
+    public int currentSlotNumber = 0;
 }
